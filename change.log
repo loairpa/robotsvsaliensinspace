@@ -1,0 +1,7 @@
+2013-03-11
+-Bug Fix: Aliens go outside the box when more than one (Bug report from 2013-03-10)
+-Bug Fix: Fire comes out after every row in the back (Bug report from 2013-03-10)
+-Bug Fix: Hit edge doesn't work (Bug report from 2013-03-11)
+-Bug Fix: After hitting Edge it gets stuck (Bug report from 2013-03-09)
+-Bug Fix: Robot crashes into left well animation turns right, but "direction" is left (Bug report from 2013-03-09)
+-Bug Fix: Robot sometimes doesn't complete the move if stopped and started again (Bug report from 2013-03-09)
