@@ -33,9 +33,13 @@ public class Robot extends DynamicGameObject {
 		this.direction = ROBOT_DOWN;
 		this.state = ROBOT_STATE_ACTIVE;
 		this.alive = true;
+		// TODO Auto-generated constructor stub
 	}
 	
-	public void update(float deltaTime){		
+	public void update(float deltaTime){
+		
+
+		
 		if(state == ROBOT_STATE_ACTIVE){
 			
 		switch(direction){
@@ -64,7 +68,9 @@ public class Robot extends DynamicGameObject {
 				state= ROBOT_STATE_ACTIVE;
 				stateTime=0.0f;
 			}
-		}			
+		}
+			
+			
 
 		position.add(velocity.x*deltaTime, velocity.y*deltaTime);
 		bounds.lowerLeft.set(position).sub(bounds.width/2, bounds.height/2);
@@ -73,7 +79,45 @@ public class Robot extends DynamicGameObject {
 
 	}
 
+	public void hitEdge(){
+//		state= ROBOT_STATE_STOP;
+//		velocity.set(0,0);
+//		walkTime=0;
+		Log.d("hitEdge","True");
 
+	}
+	
+	public void onConveyorbelt(int beltdir, float deltaTime){	
+
+
+		state = ROBOT_STATE_ON_BELT;
+			
+
+		
+		switch(beltdir){
+		case Conveyorbelt.BELT_UP:
+			velocity.set(0,2f*ROBOT_VELOCITY);
+			break;
+		case Conveyorbelt.BELT_DOWN:
+			velocity.set(0,-2f*ROBOT_VELOCITY);
+			break;
+		case Conveyorbelt.BELT_LEFT:
+			velocity.set(-2f*ROBOT_VELOCITY,0);
+			break;
+		case Conveyorbelt.BELT_RIGHT:
+			velocity.set(2f*ROBOT_VELOCITY,0);
+			break;
+		default:
+		    velocity.set(0,0);
+			break;
+			
+		} stateTime+=deltaTime;
+		if(stateTime>0.1f){
+			state = ROBOT_STATE_ACTIVE;
+			stateTime =0.0f;			
+		}
+		
+	}
 	
 	public void setState(int command){
 		switch(command){	
@@ -102,43 +146,4 @@ public class Robot extends DynamicGameObject {
 		}
 
 	}
-	
-	public void hitEdge(){
-//		state= ROBOT_STATE_STOP;
-//		velocity.set(0,0);
-//		walkTime=0;
-		Log.d("hitEdge","True");
-		Log.d("Direction",""+direction);
-		Log.d("Position",""+position.x+","+position.y);
-
-	}
-	public void onConveyorbelt(int beltdir, float deltaTime){
-		state= ROBOT_STATE_ON_BELT;	
-		Log.d("Position",""+position.x+","+position.y);
-		switch(beltdir){
-		case Conveyorbelt.BELT_UP:
-			velocity.set(0,2f*ROBOT_VELOCITY);
-			break;
-		case Conveyorbelt.BELT_DOWN:
-			velocity.set(0,-2f*ROBOT_VELOCITY);
-			break;
-		case Conveyorbelt.BELT_LEFT:
-			velocity.set(-2f*ROBOT_VELOCITY,0);
-			break;
-		case Conveyorbelt.BELT_RIGHT:
-			velocity.set(2f*ROBOT_VELOCITY,0);
-			break;
-		default:
-		    velocity.set(0,0);
-			break;
-			
-		} stateTime+=deltaTime;
-		if(stateTime>0.1f){
-			state = ROBOT_STATE_ACTIVE;
-			stateTime =0.0f;			
-		}
-		
-	}
-	
-
 }
