@@ -39,7 +39,9 @@ public class World {
 	public int score; 
 	public int state;
 	public LevelLoader level;
-
+	
+	private boolean wasOnBelt = false;
+	private int robotOnBelt;
 	private float oldDeltaTime=0.0f;
 	private Vector2 oldPosition; 
 	public World(LevelLoader level) throws XmlPullParserException, IOException{
@@ -114,12 +116,12 @@ public class World {
 			robot.direction = Robot.ROBOT_STATE_DEAD;
 		}
 
-		if(checkAtBelt(deltaTime)){			
+		if(checkAtBelt(deltaTime)){
+			wasOnBelt = true;
 			controlPanel.paused=true;
 			Log.d("checkAtBelt","True");	
 		}
-		else
-			controlPanel.paused = false;
+		else controlPanel.paused = false;
 	}
 
 	private void updateControlPanel(){
@@ -144,44 +146,85 @@ public class World {
 		int len = conveyorbelts.size();
 		for(int i =0; i<len; i++){
 			Conveyorbelt belt = conveyorbelts.get(i);
-			if(OverlapTester.overlapHalfXRectangles(robot.bounds, belt.bounds, robot.direction)){			
-				robot.onConveyorbelt(belt.direction,deltaTime);
-				moveRobotAfterBelt(i);			
+			if(OverlapTester.overlapHalfXRectangles(robot.bounds, belt.bounds, robot.direction)){
+				robotOnBelt = i;
+				robot.onConveyorbelt(belt.direction,deltaTime);			
+				moveRobotOnBelt(robotOnBelt);			
 				return true;
 			}
 
 		}
+		if(wasOnBelt){
+			Log.d("End of belt","True");
+			robotAfterBelt(robotOnBelt);
+			wasOnBelt = false;
+			controlPanel.paused = false;
+		updateControlPanel();
+//			
+		}
 		return false;
 	}
 
-	private void moveRobotAfterBelt(int currentbelt){
+	private void moveRobotOnBelt(int currentbelt){
 		Conveyorbelt belt = conveyorbelts.get(currentbelt);
 		int dir = Math.abs(belt.direction-robot.direction);
 		switch(dir){
 		case 0: 
 			oldPosition.set(belt.position);
-			Log.v("0",""+belt.position.x+","+belt.position.y);
+			Log.v("0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 90:
 			oldPosition.set(belt.position);
-			Log.v("90 robot",""+robot.position.x+","+robot.position.y);
-			Log.v("90",""+belt.position.x+","+belt.position.y);
-
+			Log.v("90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 180:
 			oldPosition.set(belt.position);
-			Log.v("180 robot",""+robot.position.x+","+robot.position.y);
-			Log.v("180",""+belt.position.x+","+belt.position.y);
+			Log.v("180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 270: 
 			oldPosition.set(belt.position);
-			Log.v("270",""+belt.position.x+","+belt.position.y);
+			Log.v("270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		default:
 			break;
 		}
 
 
+	}
+	
+	private void robotAfterBelt(int currentbelt){
+		Conveyorbelt belt = conveyorbelts.get(currentbelt);
+		int dir = belt.direction;
+		switch(dir){
+		case 0: 
+			robot.position.x = belt.position.x+0.1f;
+			robot.position.y = belt.position.y+1.0f;
+			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+			Log.v("End of belt 0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			break;
+		case 90:
+			robot.position.x = belt.position.x-0.9f;
+			robot.position.y = belt.position.y;
+			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);			
+			Log.v("End of belt 90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			break;
+		case 180:
+			robot.position.x = belt.position.x+0.1f;
+			robot.position.y = belt.position.y-1.0f;
+			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+			Log.v("End of belt 180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			break;
+		case 270: 
+			robot.position.x = belt.position.x+0.9f;
+			robot.position.y = belt.position.y;
+			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+			Log.v("End of belt 270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			break;
+		default:
+			break;
+		
+		}
+		
 	}
 
 	private boolean checkAtButton(){

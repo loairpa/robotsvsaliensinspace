@@ -88,12 +88,7 @@ public class Robot extends DynamicGameObject {
 	}
 	
 	public void onConveyorbelt(int beltdir, float deltaTime){	
-
-
-		state = ROBOT_STATE_ON_BELT;
-			
-
-		
+		state = ROBOT_STATE_ON_BELT;	
 		switch(beltdir){
 		case Conveyorbelt.BELT_UP:
 			velocity.set(0,2f*ROBOT_VELOCITY);

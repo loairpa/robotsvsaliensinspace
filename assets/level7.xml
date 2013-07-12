@@ -28,7 +28,7 @@
     <ship> <x>2.0</x>  <y>8.0</y> </ship>
     <ship> <x>2.0</x>  <y>7.0</y> </ship>
     
-    <robot> <x>6.0</x>  <y>9.0</y> </robot>
+    <robot> <x>8.0</x>  <y>9.0</y> </robot>
      
      
      <button><x>2.0</x> <y>7.0</y> </button>

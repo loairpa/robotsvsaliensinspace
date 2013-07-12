@@ -64,16 +64,16 @@ public class OverlapTester {
 			if (top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height && top.lowerLeft.x>=bottom.lowerLeft.x  && top.lowerLeft.x+top.width<=bottom.lowerLeft.x+bottom.width+0.1f)
 				return true;
 			else return false;
-
 		case 90:
 			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02f && top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height && top.lowerLeft.x>=bottom.lowerLeft.x )
-				return true;
+				return true;			
 			else return false;
 
 		case 180:
-			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02&& top.lowerLeft.x>=bottom.lowerLeft.x  && top.lowerLeft.x+top.width<=bottom.lowerLeft.x+bottom.width+0.1f)
+			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02&& top.lowerLeft.x>=bottom.lowerLeft.x-0.1f  && top.lowerLeft.x+top.width<=bottom.lowerLeft.x+bottom.width+0.2f)
 				return true;
-			else return false;
+			else
+				return false;
 		case 270:
 			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02f && top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height&& top.lowerLeft.x+top.width<= bottom.lowerLeft.x+bottom.width+0.15f)
 				//if (top.lowerLeft.y >=bottom.lowerLeft.y &&  top.lowerLeft.x+top.width<= bottom.lowerLeft.x+bottom.width)  			
@@ -110,18 +110,19 @@ public class OverlapTester {
 			if(r1.lowerLeft.x < r2.lowerLeft.x + r2.width/4 &&
 					r1.lowerLeft.x + r1.width/2> r2.lowerLeft.x &&
 					r1.lowerLeft.y < r2.lowerLeft.y + r2.height&&
-					r1.lowerLeft.y + r1.height > r2.lowerLeft.y)
-				return true;
+					r1.lowerLeft.y + r1.height > r2.lowerLeft.y){
+/*				Log.v("lowerLeft.x",""+r1.lowerLeft.x+","+r2.lowerLeft.x);
+				Log.v("lowerLeft.y",""+r1.lowerLeft.y+","+r2.lowerLeft.y);*/
+			
+				return true;}
 			else
 				return false;
 		case 180: 
 			if(r1.lowerLeft.x < r2.lowerLeft.x + r2.width/2 &&
 					r1.lowerLeft.x + r1.width/2> r2.lowerLeft.x &&
 					r1.lowerLeft.y < r2.lowerLeft.y + r2.height/2 &&
-					r1.lowerLeft.y  > r2.lowerLeft.y- r2.height/2){
-				Log.v("lowerLeft.x",""+r1.lowerLeft.x+","+r2.lowerLeft.x);
-				Log.v("lowerLeft.y",""+r1.lowerLeft.y+","+r2.lowerLeft.y);
-				return true;}
+					r1.lowerLeft.y  > r2.lowerLeft.y- r2.height/2)
+				return true;
 			else
 				return false;
 		case 270:
