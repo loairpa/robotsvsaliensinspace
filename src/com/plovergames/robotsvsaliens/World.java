@@ -100,6 +100,7 @@ public class World {
 			if(oldDeltaTime >=1.0f){
 				oldDeltaTime=0.0f;
 				updateControlPanel();	
+				oldPosition.set(robot.position);
 
 			}			
 		}			
