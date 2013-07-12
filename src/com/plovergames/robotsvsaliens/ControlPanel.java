@@ -40,6 +40,7 @@ public class ControlPanel  {
 		if(!paused){
 			active +=1;
 			if(active > 8) {
+				paused=true;
 				active=0;
 			}	
 		}

@@ -106,7 +106,9 @@ public class World {
 		}			
 		if(checkAtButton()){
 			Log.d("checkAtButton","True");
+			controlPanel.paused=true;
 			state=WORLD_STATE_NEXT_LEVEL;
+			return;
 		}
 		if(checkAlienCollision() || checkLaserCollision()){
 			Log.d("checkCollision()","True");
@@ -201,12 +203,14 @@ public class World {
 			robot.position.x = belt.position.x+0.1f;
 			robot.position.y = belt.position.y+1.0f;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+			oldPosition.set(robot.position);
 			Log.v("End of belt 0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 90:
 			robot.position.x = belt.position.x-0.9f;
 			robot.position.y = belt.position.y;
-			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);			
+			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+			oldPosition.set(robot.position);
 			Log.v("End of belt 90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 180:
@@ -214,12 +218,14 @@ public class World {
 			robot.position.y = belt.position.y-1.0f;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
 			Log.v("End of belt 180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			oldPosition.set(robot.position);
 			break;
 		case 270: 
 			robot.position.x = belt.position.x+0.9f;
 			robot.position.y = belt.position.y;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
 			Log.v("End of belt 270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			oldPosition.set(robot.position);
 			break;
 		default:
 			break;
