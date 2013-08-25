@@ -28,7 +28,7 @@
 	<alien> <x> 2.0</x> <y>6.0</y> <state>90</state> </alien> 
 	<airlock>  <x>5.0</x>  <y>5.0</y> </airlock>
 	
-	<instructions><x> 9.0</x><y>8.0</y><text>Well done. The training is almost complete. </text></instructions>
+	<instructions><x> 9.0</x><y>8.0</y><text>Well done.    Your training is almost     complete. </text></instructions>
 	
 
 

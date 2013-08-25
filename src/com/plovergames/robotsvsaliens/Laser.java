@@ -9,11 +9,14 @@ public class Laser extends GameObject {
     public static final float LASER_WIDTH =0.5f;
     public static final float LASER_HEIGHT =0.5f;
     
+
     int direction;
+    int touched;
     List<LaserBeam> beam;
 	public Laser(float x, float y, int direction, int length) {
 		super(x, y, LASER_WIDTH, LASER_HEIGHT);
 		this.direction = direction;
+		this.touched = 0;
 		beam = new ArrayList<LaserBeam>();
 		
 		int len = length;
@@ -37,9 +40,12 @@ public class Laser extends GameObject {
 
 	}
 	
+	
 	static class LaserBeam extends GameObject{
+		int touched;
 		LaserBeam(float x, float y){
 		super(x, y, LASER_WIDTH, LASER_HEIGHT);
+		this.touched= 0; 
 		}
 	}
 

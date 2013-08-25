@@ -41,7 +41,7 @@
 	<conveyorbelt> <x>5.0</x> <y>5.0</y> <dir>90</dir></conveyorbelt>
 	<conveyorbelt> <x>3.0</x> <y>5.0</y> <dir>90</dir></conveyorbelt>
 	
-	<instructions><x> 9.3</x><y>8.0</y><text>Nerveracking! Use the conveyor belt to move you faster forward  </text></instructions>
+	<instructions><x> 9.3</x><y>8.0</y><text>Nerveracking! Use the     conveyor beltto go faster! </text></instructions>
 	
 
 </level>

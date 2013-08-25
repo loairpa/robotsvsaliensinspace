@@ -73,9 +73,9 @@ public class LevelLoader {
 	        	conveyorbelt.add(readConveyorbelt(parser));
 	        else if (name.equals("instructions"))
 	        	instructions.add(readInstructions(parser));
-	        else {
+        else 
 	            skip(parser);
-	        }
+	        
 		 }}
 		 finally {
 	            in.close();

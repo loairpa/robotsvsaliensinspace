@@ -20,7 +20,7 @@ import com.plovergames.framework.math.Vector2;
 
 public class GameScreen extends GLScreen {
 
-	static final int MAX_LEVEL =7;
+	static final int MAX_LEVEL =9;
 	static final int GAME_READY =0;
 	static final int GAME_RUNNING =1;
 	static final int GAME_PAUSED =2;
@@ -59,7 +59,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=4;
+		levelNumber=9;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -211,8 +211,10 @@ public class GameScreen extends GLScreen {
 //		Log.d("updatePaused", ""+deltaTime);
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		int len = touchEvents.size();
-		if(len >0) world.instructions.get(0).animate_text = world.instructions.get(0).ANIMATE_TEXT_OFF;
-		world.instructions.get(0).update(deltaTime);
+		if(world.instructions.size()>0){
+			if(len >0 ) world.instructions.get(0).animate_text = world.instructions.get(0).ANIMATE_TEXT_OFF;
+			world.instructions.get(0).update(deltaTime);
+		}
 		for(int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			if(event.type != TouchEvent.TOUCH_UP)
@@ -220,7 +222,7 @@ public class GameScreen extends GLScreen {
 
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-			world.instructions.get(0).update(deltaTime);
+			if(world.instructions.size()>0) world.instructions.get(0).update(deltaTime);
 
 			if(OverlapTester.pointInRectangle(resumeBounds, touchPoint)) {
 				//                Assets.playSound(Assets.clickSound);

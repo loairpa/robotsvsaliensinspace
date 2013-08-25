@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<level>
+    <ship> <x>7.0</x>  <y>8.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>
+    <ship> <x>7.0</x>  <y>6.0</y> </ship>
+    <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>4.0</y> </ship>
+    <ship> <x>6.0</x>  <y>8.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>6.0</x>  <y>4.0</y> </ship>
+    <ship> <x>5.0</x>  <y>8.0</y> </ship>
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>5.0</x>  <y>4.0</y> </ship>
+    <ship> <x>4.0</x>  <y>8.0</y> </ship>
+    <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>4.0</x>  <y>4.0</y> </ship>
+    <ship> <x>3.0</x>  <y>8.0</y> </ship>
+    <ship> <x>3.0</x>  <y>7.0</y> </ship>
+    <ship> <x>3.0</x>  <y>6.0</y> </ship>
+    <ship> <x>3.0</x>  <y>5.0</y> </ship>
+    <ship> <x>3.0</x>  <y>4.0</y> </ship>
+    <ship> <x>2.0</x>  <y>7.0</y> </ship>
+    <ship> <x>2.0</x>  <y>5.0</y> </ship>
+    
+    <robot> <x>6.0</x>  <y>8.0</y> </robot>
+     
+     
+    <button><x>2.0</x> <y>7.0</y> </button>
+
+	<airlock>  <x>4.0</x>  <y>6.0</y> </airlock>
+	<airlock>  <x>4.0</x>  <y>5.0</y> </airlock>
+	<airlock>  <x>5.0</x>  <y>6.0</y> </airlock>
+	<airlock>  <x>5.0</x>  <y>5.0</y> </airlock>
+	
+	<conveyorbelt> <x>6.0</x> <y>7.0</y> <dir>180</dir></conveyorbelt>
+	<conveyorbelt> <x>5.0</x> <y>7.0</y> <dir>180</dir></conveyorbelt>
+    <conveyorbelt> <x>3.0</x> <y>7.0</y> <dir>90</dir></conveyorbelt>
+	<conveyorbelt> <x>6.0</x> <y>5.0</y> <dir>180</dir></conveyorbelt>
+	<conveyorbelt> <x>3.0</x> <y>5.0</y> <dir>0</dir></conveyorbelt>
+	<conveyorbelt> <x>6.0</x> <y>4.0</y> <dir>90</dir></conveyorbelt>
+	<conveyorbelt> <x>4.0</x> <y>4.0</y> <dir>90</dir></conveyorbelt>
+	
+	<alien> <x> 5.0</x> <y>8.0</y> <state>90</state> </alien> 
+	<alien> <x> 5.5</x> <y>4.0</y> <state>90</state> </alien> 
+	<alien> <x> 4.0</x> <y>7.0</y> <state>0</state> </alien> 
+	
+	<instructions><x> 9.0</x><y>8.0</y><text>In the real   world you need to be patient and clever. </text></instructions>
+	
+</level>

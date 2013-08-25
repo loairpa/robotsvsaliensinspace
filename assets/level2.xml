@@ -15,6 +15,6 @@
      <button> <x> 3.0</x> <y>6.0</y></button>
      
 	<airlock>  <x>5.0</x>  <y>6.0</y> </airlock>
-     <instructions><x> 7.0</x><y>8.0</y><text>Good job Earthling! Now try avoiding the airlocks </text></instructions>
+     <instructions><x> 7.0</x><y>8.0</y><text>Good job Earthling Now try avoiding the airlocks </text></instructions>
 	
 </level>

@@ -1,10 +1,5 @@
-2013-04-03
-- Doesn't pause after running out
-2013-03-18
--Robot has no animation when going up or down after touching conveyorbelt
-
-2013-03-11
--Robot has no animation at the beginning of a move
 
 
 
+
+<?xml version="1.0" encoding="UTF-8"?>

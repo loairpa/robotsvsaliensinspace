@@ -69,9 +69,10 @@ public class World {
 		lasers.clear();
 		airlocks.clear();
 		conveyorbelts.clear();
+		instructions.clear();
 		robot = new Robot();
 		button = new SelfDestructButton();
-		level.loadLevel(ship,robot,button,aliens,lasers,airlocks, conveyorbelts,instructions);
+		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions);
 		oldPosition = new Vector2(robot.position.x,robot.position.y);
 
 
@@ -104,8 +105,6 @@ public class World {
 			
 			if(checkAtEdge())
 				robot.hitEdge();
-
-//			if(robot.state == Robot.ROBOT_HIT_BY_LASER) robot.update(deltaTime);
 		
 			
 			if(oldDeltaTime >=1.0f){
@@ -147,8 +146,11 @@ public class World {
 
 	private void updateControlPanel(){
 		controlPanel.update();
-		if(robot.state==Robot.ROBOT_HIT_BY_LASER)
+		if(robot.state==Robot.ROBOT_HIT_BY_LASER){
 			controlPanel.update();
+			robot.state = Robot.ROBOT_STATE_ACTIVE;
+		}
+			
 		robot.setState(controlPanel.commands[controlPanel.active-1]);
 	}
 
@@ -274,13 +276,17 @@ public class World {
 			Laser laser = lasers.get(i);
 
 			//if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.bounds))
-			if(OverlapTester.overlapLaser(robot.bounds,laser.bounds))
+			if(laser.touched==0 && OverlapTester.overlapLaser(robot.bounds,laser.bounds)){
+				laser.touched= Math.abs(laser.touched-1);;
 				return true;
+			}
 			int lenbeam = laser.beam.size();
 			for(int j =0; j<lenbeam;j++){
 //				if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.beam.get(j).bounds))
-				if(OverlapTester.overlapLaser(robot.bounds,laser.beam.get(j).bounds))
+				if(laser.beam.get(j).touched == 0 && OverlapTester.overlapLaser(robot.bounds,laser.beam.get(j).bounds)){
+					laser.beam.get(j).touched =  Math.abs(laser.beam.get(j).touched-1);
 				return true;
+				}
 			}
 
 		}

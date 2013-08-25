@@ -52,17 +52,17 @@ public class WorldRenderer {
 		renderControlPanel();
 		renderShip();
 		renderItems();
-		renderLaser();
 		renderBelt();
 		renderRobot();
 		renderAlien();
-
+		renderLaser();
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 	}
 
-	private void renderInstructions(){
-		if(world.instructions.size()>0){
+	private void renderInstructions(){	
+		int len = world.instructions.size();
+		if(len >0){
 			Instructions instructions = world.instructions.get(0);
 			if(instructions.animate_text == instructions.ANIMATE_TEXT_ON)
 				Assets.font.animateText(batcher, instructions.text, instructions.position.x, instructions.position.y,instructions.TEXTBOX_WIDTH,instructions.TEXTBOX_HEIGHT, instructions.currentLetter);
@@ -163,9 +163,9 @@ public class WorldRenderer {
 
 			batcher.drawSprite(laser.position.x, laser.position.y, 1.0f, 1.0f,laser.direction,Assets.laser);
 			int lenBeam = laser.beam.size();
-			for(i =0; i<lenBeam;i++){
-				batcher.drawSprite(laser.beam.get(i).position.x, laser.beam.get(i).position.y, 1, 1,laser.direction, Assets.laserbeam);
-			}
+			for(int j =0; j<lenBeam;j++)
+				batcher.drawSprite(laser.beam.get(j).position.x, laser.beam.get(j).position.y, 1, 1,laser.direction, Assets.laserbeam);
+			
 		}
 	}
 	private void renderControlPanel() {
