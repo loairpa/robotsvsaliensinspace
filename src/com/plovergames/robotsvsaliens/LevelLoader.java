@@ -39,7 +39,7 @@ public class LevelLoader {
 	 }
 	 
 	public void loadLevel(List <Ship> ship, Robot robot, SelfDestructButton button, List <Alien> aliens, 
-							List <Laser> lasers, List <Airlock> airlocks, List<Conveyorbelt> conveyorbelt) throws XmlPullParserException, IOException{
+							List <Laser> lasers, List <Airlock> airlocks, List<Conveyorbelt> conveyorbelt, List<Instructions> instructions) throws XmlPullParserException, IOException{
 		
 		in = fileIO.readAsset(fileName);
 		 try {
@@ -71,6 +71,8 @@ public class LevelLoader {
 	        	airlocks.add(readAirlock(parser));
 	        else if(name.equals("conveyorbelt"))
 	        	conveyorbelt.add(readConveyorbelt(parser));
+	        else if (name.equals("instructions"))
+	        	instructions.add(readInstructions(parser));
 	        else {
 	            skip(parser);
 	        }
@@ -261,6 +263,32 @@ private Conveyorbelt readConveyorbelt(XmlPullParser parser) throws XmlPullParser
 	}
 	return new Conveyorbelt(x,y,dir);
 }
+
+private Instructions readInstructions(XmlPullParser parser) throws XmlPullParserException, IOException{
+	parser.require(XmlPullParser.START_TAG, ns, "instructions");
+	float x =0.0f;
+	float y = 0.0f;
+	String string = "";
+	while (parser.next() != XmlPullParser.END_TAG) {
+	     if (parser.getEventType() != XmlPullParser.START_TAG) {
+	            continue;
+	        }
+	        String name = parser.getName();
+	        if (name.equals("x")) {
+	        	x = readFloat(parser,name);
+	        } else if (name.equals("y")) {
+	        	y = readFloat(parser,name);
+	        } else if(name.equals("text")){
+	        	string = readString(parser,name);
+	        Log.d("Loading Instructions",string);}
+	        else {
+	            skip(parser);
+	        }
+
+	}
+	return new Instructions(x,y,string);
+}
+
 private float readFloat(XmlPullParser parser, String label) throws XmlPullParserException, IOException{
 	float result = 0.0f; 
 	parser.require(XmlPullParser.START_TAG, ns, label);
@@ -285,6 +313,20 @@ private int readInt(XmlPullParser parser, String label) throws XmlPullParserExce
     parser.require(XmlPullParser.END_TAG, ns, label);
 
     return result;
+
+}
+
+private String readString(XmlPullParser parser, String label) throws XmlPullParserException, IOException{
+	String string = ""; 
+	parser.require(XmlPullParser.START_TAG, ns, label);
+
+    if (parser.next() == XmlPullParser.TEXT) {
+        string = parser.getText();
+        parser.nextTag();
+    }
+    parser.require(XmlPullParser.END_TAG, ns, label);
+
+    return string;
 
 }
 private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {

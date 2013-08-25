@@ -2,23 +2,28 @@
 
 <level>
     
-    <ship> <x>6.0</x>  <y>9.0</y> </ship>
-    <ship> <x>6.0</x>  <y>8.0</y> </ship>
     <ship> <x>6.0</x>  <y>7.0</y> </ship>
-    <ship> <x>5.0</x>  <y>9.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
     <ship> <x>5.0</x>  <y>7.0</y> </ship>
-    <ship> <x>4.0</x>  <y>9.0</y> </ship>
-    <ship> <x>4.0</x>  <y>8.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
     <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
 
     
-     <robot> <x>6.0</x>  <y>9.0</y> </robot>
+     <robot> <x>6.0</x>  <y>7.0</y> </robot>
      
      
-     <button><x>4.0</x> <y>8.0</y> </button>
+     <button><x>4.0</x> <y>6.0</y> </button>
      
 		
-	<laser> <x>5.0</x>  <y>9.0</y> <direction>270</direction> <length>0</length> </laser>
+	<laser> <x>5.0</x>  <y>7.0</y> <direction>270</direction> <length>2</length> </laser>
 
+
+	
+	<instructions><x> 7.0</x><y>8.0</y><text>That Was Close! Be careful around those lasers.  </text></instructions>
+	
 
 </level>

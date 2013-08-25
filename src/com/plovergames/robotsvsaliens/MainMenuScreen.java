@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.plovergames.framework.Game;
 import com.plovergames.framework.Input.TouchEvent;
 import com.plovergames.framework.gl.Camera2D;
@@ -31,7 +33,7 @@ public class MainMenuScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 320, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		soundBounds = new Rectangle(0,0,64,64);
-		playBounds = new Rectangle(160-150, 200+18, 300, 36);
+		playBounds = new Rectangle(10, 210, 300, 64);
 		highscoresBounds = new Rectangle(160-150, 200-18, 300, 36);
 		helpBounds = new Rectangle(160-150, 200-18-36, 300, 36);
 		touchPoint = new Vector2();
@@ -70,21 +72,19 @@ public class MainMenuScreen extends GLScreen {
 	        
 	        batcher.beginBatch(Assets.background);
 	        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
+
 	        batcher.endBatch();
+	        gl.glDisable(GL10.GL_BLEND);
 	        
 	        gl.glEnable(GL10.GL_BLEND);
 	        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);               
 	        
 	        batcher.beginBatch(Assets.items);    
-	        batcher.drawSprite(160, 200, 98, 64, Assets.mainMenu);
-	        
-
-
-	        
-
-	        
-
+//	        batcher.drawSprite(160, 200, 98, 64, Assets.mainMenu);
+	        Assets.font.drawText(batcher, "TURORIAL", 120,250);
+//	        Assets.font.animateText(batcher, "Tutorial", 120, 250, 100000);
 	        batcher.endBatch();
+	        
 	        
 	        gl.glDisable(GL10.GL_BLEND);
 	}

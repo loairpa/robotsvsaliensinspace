@@ -2,16 +2,17 @@
 
 <level>
     
-    <ship> <x>5.0</x>  <y>9.0</y> </ship>
-    <ship> <x>5.0</x>  <y>8.0</y> </ship>
     <ship> <x>5.0</x>  <y>7.0</y> </ship>
-    <ship> <x>4.0</x>  <y>9.0</y> </ship>
-    <ship> <x>4.0</x>  <y>8.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
     <ship> <x>4.0</x>  <y>7.0</y> </ship>
-    <ship> <x>3.0</x>  <y>8.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>3.0</x>  <y>6.0</y> </ship>
     
-     <robot> <x>5.0</x>  <y>9.0</y> </robot>
-     <button> <x> 3.0</x> <y>8.0</y></button>
+     <robot> <x>5.0</x>  <y>7.0</y> </robot>
+     <button> <x> 3.0</x> <y>6.0</y></button>
+     <instructions><x> 7.0</x><y>9.0</y><text>Earthling! This isyour captain speaking. The Earth is under attack! Yourjob is to destroy the enemy ships using the kamakrazy Robots!! Your training begins Now! Use the control panel to program the robot. IT can move forward or turn right or left. Press > to execute your program </text></instructions>
      
 
 </level>

@@ -5,7 +5,7 @@ import com.plovergames.framework.DynamicGameObject;
 public class Alien extends DynamicGameObject {
 	public static final float ALIEN_WIDTH =1f;
     public static final float ALIEN_HEIGHT =1f;
-    public static final float ALIEN_VELOCITY =0.5f;
+    public static final float ALIEN_VELOCITY =0.4f;
     
     public static final int ALIEN_STATE_UP_DOWN =0;
     public static final int ALIEN_STATE_LEFT_RIGHT =90;

@@ -6,8 +6,8 @@ import java.util.List;
 import com.plovergames.framework.GameObject;
 
 public class Laser extends GameObject {
-    public static final float LASER_WIDTH =1.0f;
-    public static final float LASER_HEIGHT =1.0f;
+    public static final float LASER_WIDTH =0.5f;
+    public static final float LASER_HEIGHT =0.5f;
     
     int direction;
     List<LaserBeam> beam;

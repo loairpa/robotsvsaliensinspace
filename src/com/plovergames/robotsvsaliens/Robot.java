@@ -21,6 +21,7 @@ public class Robot extends DynamicGameObject {
     public static final int ROBOT_STATE_TURNING = 2; 
     public static final int ROBOT_STATE_ON_BELT=3;
     public static final int ROBOT_STATE_DEAD = 4;
+    public static final int ROBOT_HIT_BY_LASER = 5;
 
     
     int direction; 
@@ -40,7 +41,7 @@ public class Robot extends DynamicGameObject {
 		
 
 		
-		if(state == ROBOT_STATE_ACTIVE){
+		if(state == ROBOT_STATE_ACTIVE || state == ROBOT_HIT_BY_LASER){
 			
 		switch(direction){
 		case ROBOT_DOWN:
@@ -61,7 +62,7 @@ public class Robot extends DynamicGameObject {
 		}
 		
 		walkTime +=deltaTime;
-		}else if(state==ROBOT_STATE_TURNING){
+		}else if(state==ROBOT_STATE_TURNING ){
 			velocity.set(0,0);
 			stateTime+=deltaTime;
 			if(stateTime>1.0f){
@@ -86,6 +87,7 @@ public class Robot extends DynamicGameObject {
 		Log.d("hitEdge","True");
 
 	}
+	
 	
 	public void onConveyorbelt(int beltdir, float deltaTime){	
 		state = ROBOT_STATE_ON_BELT;	

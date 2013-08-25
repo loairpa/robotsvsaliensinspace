@@ -51,7 +51,7 @@ public class Assets {
         background = new Texture(game, "background.png");
         backgroundRegion = new TextureRegion(background, 0, 0, 320, 480);
         
-        items = new Texture(game, "atlas.png");    
+        items = new Texture(game, "atlasnew.png");    
         
         mainMenu = new TextureRegion(items, 194, 98, 120,64);
 
@@ -100,30 +100,10 @@ public class Assets {
         conveyorbelt = new Animation(0.2f,                                 
            new TextureRegion(items,61, 160, 16, 32),
              new TextureRegion(items, 81,160,  16, 32));
-        
-//        robotUpAnim = new Animation(0.2f,                                 
-//              new TextureRegion(items, 128, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32),
-//              new TextureRegion(items, 192, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32));;
-//        robotLeftAnim = new Animation(0.2f,                                 
-//              new TextureRegion(items, 128, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32),
-//              new TextureRegion(items, 192, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32));;
-//        robotRightAnim = new Animation(0.2f,                                 
-//              new TextureRegion(items, 128, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32),
-//              new TextureRegion(items, 192, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32));;
-//        alienAnim = new Animation(0.2f,                                 
-//              new TextureRegion(items, 128, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32),
-//              new TextureRegion(items, 192, 32, 32, 32),
-//              new TextureRegion(items, 160, 32, 32, 32));;
 
-//             new TextureRegion(items, 192, 32, 32, 32),
-//             new TextureRegion(items, 160, 32, 32, 32));;   
+
+        font = new Font(items,8, 160+32, 16, 16, 20);
+        
 //        mainMenu = new TextureRegion(items, 0, 224, 300, 110);
 //        pauseMenu = new TextureRegion(items, 224, 128, 192, 96);
 //        ready = new TextureRegion(items, 320, 224, 192, 32);
@@ -135,31 +115,7 @@ public class Assets {
 //        arrow = new TextureRegion(items, 0, 64, 64, 64);
 //        pause = new TextureRegion(items, 64, 64, 64, 64);
 //        
-//        spring = new TextureRegion(items, 128, 0, 32, 32);
-//        castle = new TextureRegion(items, 128, 64, 64, 64);
-//        coinAnim = new Animation(0.2f,                                 
-//                                 new TextureRegion(items, 128, 32, 32, 32),
-//                                 new TextureRegion(items, 160, 32, 32, 32),
-//                                 new TextureRegion(items, 192, 32, 32, 32),
-//                                 new TextureRegion(items, 160, 32, 32, 32));
-//        bobJump = new Animation(0.2f,
-//                                new TextureRegion(items, 0, 128, 32, 32),
-//                                new TextureRegion(items, 32, 128, 32, 32));
-//        bobFall = new Animation(0.2f,
-//                                new TextureRegion(items, 64, 128, 32, 32),
-//                                new TextureRegion(items, 96, 128, 32, 32));
-//        bobHit = new TextureRegion(items, 128, 128, 32, 32);
-//        squirrelFly = new Animation(0.2f, 
-//                                    new TextureRegion(items, 0, 160, 32, 32),
-//                                    new TextureRegion(items, 32, 160, 32, 32));
-//        platform = new TextureRegion(items, 64, 160, 64, 16);
-//        brakingPlatform = new Animation(0.2f,
-//                                     new TextureRegion(items, 64, 160, 64, 16),
-//                                     new TextureRegion(items, 64, 176, 64, 16),
-//                                     new TextureRegion(items, 64, 192, 64, 16),
-//                                     new TextureRegion(items, 64, 208, 64, 16));
-//        
-//        font = new Font(items, 224, 0, 16, 16, 20);
+
 //        
 //        music = game.getAudio().newMusic("music.mp3");
 //        music.setLooping(true);

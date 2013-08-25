@@ -21,8 +21,8 @@ public class World {
 		public void coin();
 	}
 
-	public static final float WORLD_WIDTH =10;
-	public static final float WORLD_HEIGHT =15;
+	public static final float WORLD_WIDTH =15;
+	public static final float WORLD_HEIGHT =10;
 	public static final int WORLD_STATE_RUNNING=0;
 	public static final int WORLD_STATE_NEXT_LEVEL=1;
 	public static final int WORLD_STATE_GAME_OVER=2;
@@ -36,6 +36,7 @@ public class World {
 	public List <Laser> lasers;
 	public List <Airlock> airlocks;
 	public List <Conveyorbelt> conveyorbelts;
+	public List <Instructions> instructions; 
 	public int score; 
 	public int state;
 	public LevelLoader level;
@@ -56,6 +57,7 @@ public class World {
 		this.lasers = new ArrayList<Laser>();
 		this.airlocks = new ArrayList<Airlock>();
 		this.conveyorbelts = new ArrayList<Conveyorbelt>();
+		this.instructions = new ArrayList<Instructions>();//new Instructions(0,0,"");
 		this.controlPanel = new ControlPanel();
 
 		generatelevel();
@@ -69,8 +71,9 @@ public class World {
 		conveyorbelts.clear();
 		robot = new Robot();
 		button = new SelfDestructButton();
-		level.loadLevel(ship,robot,button,aliens,lasers,airlocks, conveyorbelts);
+		level.loadLevel(ship,robot,button,aliens,lasers,airlocks, conveyorbelts,instructions);
 		oldPosition = new Vector2(robot.position.x,robot.position.y);
+
 
 	}
 
@@ -83,25 +86,32 @@ public class World {
 
 	private void updateRobot(float deltaTime){
 
+		if(controlPanel.active >8) return;
 		if(controlPanel.commands[controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() ){
 			oldDeltaTime = 0.0f;
 			robot.update(deltaTime);
 			if(oldPosition.dist(robot.position)>=1.0f){
+//				Log.d("oldPosition",""+robot.position.x);
 				updateControlPanel();
 				oldPosition.set(robot.position);
+				if(controlPanel.active==9) controlPanel.end=true;
+
 			}
 
 		}
 		else{
 			oldDeltaTime+=deltaTime;
+			
 			if(checkAtEdge())
 				robot.hitEdge();
 
+//			if(robot.state == Robot.ROBOT_HIT_BY_LASER) robot.update(deltaTime);
+		
+			
 			if(oldDeltaTime >=1.0f){
 				oldDeltaTime=0.0f;
 				updateControlPanel();	
 				oldPosition.set(robot.position);
-
 			}			
 		}			
 		if(checkAtButton()){
@@ -110,12 +120,20 @@ public class World {
 			state=WORLD_STATE_NEXT_LEVEL;
 			return;
 		}
-		if(checkAlienCollision() || checkLaserCollision()){
+		if(checkAlienCollision()){ 
 			Log.d("checkCollision()","True");
-			controlPanel.active = 0;
+			controlPanel.end= true;
+		}
+		if(checkLaserCollision()){
+			Log.d("CheckLaserCollision","True");
+//			if(robot.state == Robot.ROBOT_STATE_ACTIVE){
+				robot.state = Robot.ROBOT_HIT_BY_LASER; 
+//			}
+//			robot.state = Robot.ROBOT_HIT_BY_LASER;
+//			robot.update(deltaTime);
 		}
 		if(checkAirlockCollision()){
-			Log.d("checkAlienCollision()","True");
+			Log.d("checkAirlockCollision()","True");
 			robot.direction = Robot.ROBOT_STATE_DEAD;
 		}
 
@@ -128,7 +146,9 @@ public class World {
 	}
 
 	private void updateControlPanel(){
-		controlPanel.update();		
+		controlPanel.update();
+		if(robot.state==Robot.ROBOT_HIT_BY_LASER)
+			controlPanel.update();
 		robot.setState(controlPanel.commands[controlPanel.active-1]);
 	}
 
@@ -253,12 +273,14 @@ public class World {
 		for(int i = 0; i<len; i++){
 			Laser laser = lasers.get(i);
 
-			if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.bounds))
+			//if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.bounds))
+			if(OverlapTester.overlapLaser(robot.bounds,laser.bounds))
 				return true;
 			int lenbeam = laser.beam.size();
 			for(int j =0; j<lenbeam;j++){
-				if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.beam.get(j).bounds))
-					return true;
+//				if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.beam.get(j).bounds))
+				if(OverlapTester.overlapLaser(robot.bounds,laser.beam.get(j).bounds))
+				return true;
 			}
 
 		}

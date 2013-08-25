@@ -96,6 +96,16 @@ public class OverlapTester {
 			return false;
 	}
 
+	public static boolean overlapLaser(Rectangle r1, Rectangle r2) {
+		if(r1.lowerLeft.x < r2.lowerLeft.x + r2.width/2 &&
+				r1.lowerLeft.x + r1.width/2 > r2.lowerLeft.x &&
+				r1.lowerLeft.y < r2.lowerLeft.y + r2.height/2 &&
+				r1.lowerLeft.y + r1.height/2 > r2.lowerLeft.y)
+			return true;
+		else
+			return false;
+	}
+	
 	public static boolean overlapHalfXRectangles(Rectangle r1, Rectangle r2, int direction) {
 		switch(direction){
 		case 0:

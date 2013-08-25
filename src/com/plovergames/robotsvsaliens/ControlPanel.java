@@ -24,6 +24,7 @@ public class ControlPanel  {
 	public int[] commands; 
 	public int active;
 	public boolean paused=false;
+	public boolean end = false;
 	public boolean PopUpMenu = false; 
 	List <Rectangle> commandSelect;
 	public ControlPanel() {
@@ -31,17 +32,21 @@ public class ControlPanel  {
 		this.active=0;
 		commandSelect = new ArrayList<Rectangle>();
 		for(int i =0;i<8;i++)
-			commandSelect.add(new Rectangle(32+i*32,0,32,32));
+			commandSelect.add(new Rectangle(32+i*32,0,32,64));
 
 	}
 	
 
 	public void update(){
+		Log.d("active",""+active);
+
 		if(!paused){
 			active +=1;
-			if(active > 8) {
-				paused=true;
-				active=0;
+
+			if(active ==9) {
+//				paused=true;
+				end = true;
+//				active=0;
 			}	
 		}
 	}
