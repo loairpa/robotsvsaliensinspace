@@ -20,7 +20,7 @@ import com.plovergames.framework.math.Vector2;
 
 public class GameScreen extends GLScreen {
 
-	static final int MAX_LEVEL =9;
+	static final int MAX_LEVEL =10;
 	static final int GAME_READY =0;
 	static final int GAME_RUNNING =1;
 	static final int GAME_PAUSED =2;
@@ -59,7 +59,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=9;
+		levelNumber=10;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -247,7 +247,8 @@ public class GameScreen extends GLScreen {
 
 		levelNumber +=1;
 		if(levelNumber >MAX_LEVEL){
-			levelNumber = 1;
+			game.setScreen(new MainMenuScreen(game));
+			return;
 		}
 		String filename = "level"+levelNumber+".xml";
 

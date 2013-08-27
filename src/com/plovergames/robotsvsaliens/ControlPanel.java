@@ -49,22 +49,20 @@ public class ControlPanel  {
 	
 
 	public void update(){
-
-
 		if(!paused){
 			active +=1;
 
-			if(active ==9) {
-				if(currentPanel>0){
-					currentPanel--;
-					active= activePanel[currentPanel];
-				}
-				if(currentPanel==0) end = true;
-//				active=0;
-			}	
-		}
+			if(active ==9 && currentPanel>0){
+				currentPanel--;
+				active= activePanel[currentPanel];
+			}
+			if(active==9 && currentPanel==0) 
+				end = true;
+
+		}	
+
 	}
-	
+
 
 	public void menu(Vector2 touch){
 		for(int i = 0; i<8; i++){
