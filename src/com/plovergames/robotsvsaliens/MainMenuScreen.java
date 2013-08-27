@@ -21,7 +21,8 @@ public class MainMenuScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle soundBounds;
-	Rectangle playBounds;
+	Rectangle gameBounds;
+	Rectangle tutorialBounds;
 	Rectangle highscoresBounds;
 	Rectangle helpBounds;
 	Vector2 touchPoint; 
@@ -33,7 +34,8 @@ public class MainMenuScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 320, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		soundBounds = new Rectangle(0,0,64,64);
-		playBounds = new Rectangle(10, 210, 300, 64);
+		gameBounds = new Rectangle(100, 210, 200, 64);
+		tutorialBounds = new Rectangle(100, 290, 200, 64);
 		highscoresBounds = new Rectangle(160-150, 200-18, 300, 36);
 		helpBounds = new Rectangle(160-150, 200-18-36, 300, 36);
 		touchPoint = new Vector2();
@@ -51,9 +53,13 @@ public class MainMenuScreen extends GLScreen {
                 touchPoint.set(event.x, event.y);
                 guiCam.touchToWorld(touchPoint);
                 
-                if(OverlapTester.pointInRectangle(playBounds, touchPoint)) {
+                if(OverlapTester.pointInRectangle(gameBounds, touchPoint)) {
                     game.setScreen(new GameScreen(game));
                     return;
+                }
+                if(OverlapTester.pointInRectangle(tutorialBounds, touchPoint)){
+                	game.setScreen(new TutorialScreen(game));
+                	return;
                 }
 
    
@@ -81,7 +87,8 @@ public class MainMenuScreen extends GLScreen {
 	        
 	        batcher.beginBatch(Assets.items);    
 //	        batcher.drawSprite(160, 200, 98, 64, Assets.mainMenu);
-	        Assets.font.drawText(batcher, "TURORIAL", 120,250);
+	        Assets.font.drawText(batcher, "TURORIAL", 100,300);
+	        Assets.font.drawText(batcher, "GAME", 120, 250);
 //	        Assets.font.animateText(batcher, "Tutorial", 120, 250, 100000);
 	        batcher.endBatch();
 	        

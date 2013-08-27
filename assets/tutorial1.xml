@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<level>
+    
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>3.0</x>  <y>6.0</y> </ship>
+    
+     <robot> <x>5.0</x>  <y>7.0</y> </robot>
+     <button> <x> 3.0</x> <y>6.0</y></button>
+     <instructions><x> 7.0</x><y>9.0</y><text>The Earth is underattack!! You have to destroy the    enemy ships using kamakrazy Robots!!You start trainingNow! Use the panelto program the    movements. Press > to execute your  program </text></instructions>
+     
+
+</level>
+
+

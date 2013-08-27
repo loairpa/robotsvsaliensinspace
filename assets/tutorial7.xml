@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<level>
+    
+    <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>3.0</x>  <y>7.0</y> </ship>
+    <ship> <x>3.0</x>  <y>6.0</y> </ship>
+    <ship> <x>3.0</x>  <y>5.0</y> </ship>
+    <ship> <x>2.0</x>  <y>6.0</y> </ship>
+    
+    
+    <robot> <x>4.0</x>  <y>7.0</y> </robot>
+     
+     
+     <button><x>7.0</x> <y>5.0</y> </button>
+     
+     <alien> <x> 5.0</x> <y>7.0</y> <state>90</state> </alien> 
+	<alien> <x> 2.0</x> <y>6.0</y> <state>90</state> </alien> 
+	<airlock>  <x>5.0</x>  <y>5.0</y> </airlock>
+	
+	<instructions><x> 9.0</x><y>8.0</y><text>Well done.    Your training is almost     complete. </text></instructions>
+	
+
+
+</level>
