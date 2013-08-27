@@ -169,11 +169,20 @@ public class WorldRenderer {
 		}
 	}
 	private void renderControlPanel() {
-		batcher.drawSprite(7.5f, 0.8f, 15, 2f, Assets.controlpanel);
+		batcher.drawSprite(7.5f, 1f, 15, 2f, Assets.controlpanel);
+		switch(world.controlPanel.currentPanel){
+		case 1: 
+			batcher.drawSprite(0.75f,1f,1.0f,1.0f,Assets.one);
+			break;
+		default: 
+			batcher.drawSprite(0.75f,1f,1.0f,1.0f,Assets.zero);
+			break;
+		}
+		
 		if(world.controlPanel.active>0) batcher.drawSprite(1.5f*(world.controlPanel.active)+0.8f, 1f, 1.5f, 2f, Assets.active);
 
 		for(int i =0; i<8; i++){
-			switch(world.controlPanel.commands[i]){
+			switch(world.controlPanel.commands[world.controlPanel.currentPanel][i]){
 			case 1:
 				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f,Assets.move);
 				break;
@@ -182,6 +191,9 @@ public class WorldRenderer {
 				break;
 			case 3:
 				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f, Assets.turnright);
+				break;
+			case 4:
+				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.f, Assets.one);
 				break;
 			default: 
 				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f, Assets.wait);

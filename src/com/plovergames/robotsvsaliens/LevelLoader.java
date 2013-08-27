@@ -26,7 +26,7 @@ public class LevelLoader {
 	 String fileName;
 	 InputStream in;
 	 XmlPullParser parser;
-
+	 boolean levelLoaded;
 	 DocumentBuilderFactory dbFactory;
 	 DocumentBuilder dBuilder ;
 	 Document doc ;
@@ -35,11 +35,13 @@ public class LevelLoader {
 	 public LevelLoader(Game game, String fileName) throws XmlPullParserException {
 		 this.fileIO = game.getFileIO();
 		 this.fileName = fileName;
+		 this.levelLoaded = false;
 		 this.in = null;	 
 	 }
 	 
 	public void loadLevel(List <Ship> ship, Robot robot, SelfDestructButton button, List <Alien> aliens, 
-							List <Laser> lasers, List <Airlock> airlocks, List<Conveyorbelt> conveyorbelt, List<Instructions> instructions) throws XmlPullParserException, IOException{
+							List <Laser> lasers, List <Airlock> airlocks, List<Conveyorbelt> conveyorbelt, 
+							List<Instructions> instructions, ControlPanel controlpanel) throws XmlPullParserException, IOException{
 		
 		in = fileIO.readAsset(fileName);
 		 try {
@@ -73,14 +75,17 @@ public class LevelLoader {
 	        	conveyorbelt.add(readConveyorbelt(parser));
 	        else if (name.equals("instructions"))
 	        	instructions.add(readInstructions(parser));
+	        else if (!levelLoaded && name.equals("controlpanel"))
+	        	readControlPanel(parser,controlpanel);
         else 
 	            skip(parser);
 	        
 		 }}
 		 finally {
 	            in.close();
+	            levelLoaded=true;
 	            }
-
+		 
 	}
 
 private Ship readShippart(XmlPullParser parser) throws XmlPullParserException, IOException{
@@ -289,6 +294,30 @@ private Instructions readInstructions(XmlPullParser parser) throws XmlPullParser
 	return new Instructions(x,y,string);
 }
 
+private void readControlPanel(XmlPullParser parser,ControlPanel controlpanel) throws XmlPullParserException, IOException{
+parser.require(XmlPullParser.START_TAG, ns, "controlpanel");
+int numberOfPanels = 1;
+while (parser.next() != XmlPullParser.END_TAG) {
+    if (parser.getEventType() != XmlPullParser.START_TAG) {
+           continue;
+       }
+       String name = parser.getName();
+       if (name.equals("nr")) {
+       	numberOfPanels = readInt(parser,name);
+       } 
+       else {
+           skip(parser);
+       }
+
+}
+
+controlpanel.controlPanelNumber = numberOfPanels;
+controlpanel.addPanel();
+
+
+
+}
+
 private float readFloat(XmlPullParser parser, String label) throws XmlPullParserException, IOException{
 	float result = 0.0f; 
 	parser.require(XmlPullParser.START_TAG, ns, label);
@@ -345,4 +374,6 @@ private void skip(XmlPullParser parser) throws XmlPullParserException, IOExcepti
         }
     }
  }
+
+
 }

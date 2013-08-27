@@ -37,6 +37,7 @@ public class World {
 	public List <Airlock> airlocks;
 	public List <Conveyorbelt> conveyorbelts;
 	public List <Instructions> instructions; 
+	public List <ControlPanel> controlpanel;
 	public int score; 
 	public int state;
 	public LevelLoader level;
@@ -59,7 +60,7 @@ public class World {
 		this.conveyorbelts = new ArrayList<Conveyorbelt>();
 		this.instructions = new ArrayList<Instructions>();//new Instructions(0,0,"");
 		this.controlPanel = new ControlPanel();
-
+		
 		generatelevel();
 	}
 
@@ -72,7 +73,7 @@ public class World {
 		instructions.clear();
 		robot = new Robot();
 		button = new SelfDestructButton();
-		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions);
+		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions,controlPanel);
 		oldPosition = new Vector2(robot.position.x,robot.position.y);
 
 
@@ -88,7 +89,15 @@ public class World {
 	private void updateRobot(float deltaTime){
 
 		if(controlPanel.active >8) return;
-		if(controlPanel.commands[controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() ){
+		
+		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.NEXT_PANEL){
+			controlPanel.activePanel[controlPanel.currentPanel]=controlPanel.active+1;
+			controlPanel.currentPanel++;
+			controlPanel.active=1;
+			robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
+		}
+		
+		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() ){
 			oldDeltaTime = 0.0f;
 			robot.update(deltaTime);
 			if(oldPosition.dist(robot.position)>=1.0f){
@@ -150,8 +159,10 @@ public class World {
 			controlPanel.update();
 			robot.state = Robot.ROBOT_STATE_ACTIVE;
 		}
-			
-		robot.setState(controlPanel.commands[controlPanel.active-1]);
+
+		Log.v("currentPanel",""+controlPanel.currentPanel);
+		Log.v("controlPanel active",""+controlPanel.active);
+		robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 	}
 
 
@@ -196,19 +207,19 @@ public class World {
 		switch(dir){
 		case 0: 
 			oldPosition.set(belt.position);
-			Log.v("0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+//			Log.v("0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 90:
 			oldPosition.set(belt.position);
-			Log.v("90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+//			Log.v("90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 180:
 			oldPosition.set(belt.position);
-			Log.v("180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+//			Log.v("180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 270: 
 			oldPosition.set(belt.position);
-			Log.v("270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+//			Log.v("270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		default:
 			break;

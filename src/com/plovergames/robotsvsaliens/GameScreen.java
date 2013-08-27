@@ -171,6 +171,7 @@ public class GameScreen extends GLScreen {
 			if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
 				state = GAME_PAUSED;
 				world.controlPanel.active=0;
+				world.controlPanel.currentPanel=0;
 //				world.controlPanel.end= false;
 				world.generatelevel();
 				return;
@@ -184,6 +185,7 @@ public class GameScreen extends GLScreen {
 		if(world.controlPanel.end==true){
 			state=GAME_PAUSED;
 			world.controlPanel.active=0;
+			world.controlPanel.currentPanel=0;
 			world.controlPanel.paused=true;
 			world.controlPanel.end=false;
 			world.generatelevel();
@@ -228,7 +230,8 @@ public class GameScreen extends GLScreen {
 				//                Assets.playSound(Assets.clickSound);
 				state = GAME_RUNNING;
 				world.controlPanel.active = 1;
-				world.robot.setState(world.controlPanel.commands[0]);
+				world.controlPanel.currentPanel=0;
+				world.robot.setState(world.controlPanel.commands[0][0]);
 				return;
 			}else{
 				world.controlPanel.menu(touchPoint);

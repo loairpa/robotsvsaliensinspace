@@ -31,6 +31,8 @@ public class Assets {
     public static TextureRegion turnright;
     public static TextureRegion turnleft;
     public static TextureRegion wait;
+    public static TextureRegion zero, one, two, three, four, five, six, seven, eight, nine;
+  
     public static TextureRegion airlock;    
     public static TextureRegion fire;
     public static TextureRegion controlpanel;
@@ -67,6 +69,16 @@ public class Assets {
         turnright= new TextureRegion(items, 32, 32, 32, 32);
         turnleft= new TextureRegion(items, 64, 32, 32, 32);       
         wait= new TextureRegion(items, 96, 32,32, 32);
+        zero = new TextureRegion(items,160,32,32,32);
+        one = new TextureRegion(items,192,32,32,32);
+        two = new TextureRegion(items,192+32,32,32,32);
+        three = new TextureRegion(items,192+64,32,32,32);
+        four = new TextureRegion(items,192+96,32,32,32);
+        five = new TextureRegion(items,160,0,32,32);
+        six = new TextureRegion(items,192,0,32,32);
+        seven= new TextureRegion(items,192+32,0,32,32);
+        eight= new TextureRegion(items,192+64,0,32,32);
+        nine= new TextureRegion(items,192+96,0,32,32);
         
  
         fire= new TextureRegion(items, 32, 160, 32, 32);

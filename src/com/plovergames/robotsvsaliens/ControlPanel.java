@@ -20,32 +20,46 @@ public class ControlPanel  {
 	public static final int MOVE =1;
 	public static final int TURN_RIGHT =2;
 	public static final int TURN_LEFT =3;
+	public static final int NEXT_PANEL = 4; 
 	
-	public int[] commands; 
+	public int[][] commands; 
 	public int active;
+	public int[] activePanel;
+	public int controlPanelNumber=1;
+	public int currentPanel = 0;
 	public boolean paused=false;
 	public boolean end = false;
 	public boolean PopUpMenu = false; 
 	List <Rectangle> commandSelect;
+	Rectangle panelSelect;
 	public ControlPanel() {
-		this.commands = new int[8];
+		this.commands = new int[controlPanelNumber][];
+		commands[0] = new int[8];
+		this.activePanel = new int[controlPanelNumber];
 		this.active=0;
 		commandSelect = new ArrayList<Rectangle>();
 		for(int i =0;i<8;i++)
 			commandSelect.add(new Rectangle(32+i*32,0,32,64));
+		
+		panelSelect = new Rectangle(0,0,32,64);
+		
+		
 
 	}
 	
 
 	public void update(){
-		Log.d("active",""+active);
+
 
 		if(!paused){
 			active +=1;
 
 			if(active ==9) {
-//				paused=true;
-				end = true;
+				if(currentPanel>0){
+					currentPanel--;
+					active= activePanel[currentPanel];
+				}
+				if(currentPanel==0) end = true;
 //				active=0;
 			}	
 		}
@@ -56,12 +70,25 @@ public class ControlPanel  {
 		for(int i = 0; i<8; i++){
 			Rectangle selected= commandSelect.get(i);
 			if(OverlapTester.pointInRectangle(selected, touch)){
-				commands[i]+=1;
-				if (commands[i]>3) commands[i]=0;
+				commands[currentPanel][i]+=1;
+				if (commands[currentPanel][i]>2+controlPanelNumber-currentPanel) commands[currentPanel][i]=0;
+
 			return;
 			}
+			if(OverlapTester.pointInRectangle(panelSelect,touch)){
+				currentPanel +=1;
+				if(currentPanel== controlPanelNumber) currentPanel = 0;
+				return;
+			}
 		}
-
+	}
+	
+	public void addPanel(){
+		this.commands = new int[controlPanelNumber][];
+		this.activePanel = new int[controlPanelNumber];
+		for(int i=0; i < controlPanelNumber;i++)
+			commands[i]  = new int[8];
+		
 	}
 	
 

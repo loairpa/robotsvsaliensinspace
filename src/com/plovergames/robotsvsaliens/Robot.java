@@ -140,6 +140,7 @@ public class Robot extends DynamicGameObject {
 		case ControlPanel.WAIT:
 			state = ROBOT_STATE_STOP;
 			break;
+
 		}
 
 	}
