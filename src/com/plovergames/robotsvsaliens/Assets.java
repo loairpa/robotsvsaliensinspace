@@ -48,7 +48,9 @@ public class Assets {
     public static TextureRegion turnleft;
     public static TextureRegion wait;
     public static TextureRegion zero, one, two, three, four, five, six, seven, eight, nine;
-  
+    
+    public static TextureRegion scroll; 
+    
     public static TextureRegion airlock;    
     public static TextureRegion fire;
     public static TextureRegion controlpanel;
@@ -96,6 +98,7 @@ public class Assets {
         eight= new TextureRegion(items,192+64,0,32,32);
         nine= new TextureRegion(items,192+96,0,32,32);
         
+        scroll = new TextureRegion(items,128,32,32,32);
  
         fire= new TextureRegion(items, 32, 160, 32, 32);
         shippart = new TextureRegion(items, 0, 160, 32, 32);      

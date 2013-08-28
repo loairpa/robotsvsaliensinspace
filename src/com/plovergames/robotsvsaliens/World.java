@@ -38,7 +38,7 @@ public class World {
 	}
 
 	public static final float WORLD_WIDTH =15;
-	public static final float WORLD_HEIGHT =10;
+	public static final float WORLD_HEIGHT =10*20;
 	public static final int WORLD_STATE_RUNNING=0;
 	public static final int WORLD_STATE_NEXT_LEVEL=1;
 	public static final int WORLD_STATE_GAME_OVER=2;
@@ -56,6 +56,7 @@ public class World {
 	public List <ControlPanel> controlpanel;
 	public int score; 
 	public int state;
+	public float[] camPos;
 	public LevelLoader level;
 	
 	private boolean wasOnBelt = false;
@@ -77,6 +78,7 @@ public class World {
 		this.instructions = new ArrayList<Instructions>();//new Instructions(0,0,"");
 		this.controlPanel = new ControlPanel();
 		
+		this.camPos = new float[2];
 		generatelevel();
 	}
 
@@ -91,6 +93,8 @@ public class World {
 		button = new SelfDestructButton();
 		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions,controlPanel);
 		oldPosition = new Vector2(robot.position.x,robot.position.y);
+		camPos[0]=WORLD_WIDTH/2;
+		camPos[1]=WORLD_HEIGHT/40;
 
 
 	}

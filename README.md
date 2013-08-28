@@ -5,6 +5,6 @@ Robots vs. Aliens in Space is an Andriod puzzel game. Aliens have attacked the e
 
 Currently finishing first alpha version of the game, which will include a 10 level tutorial and all the basic elements. 
 
-Adding levels is as simple as writing an xml file named level#.xml. 
+Check out the wiki for more info. 
 
 

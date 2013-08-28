@@ -53,6 +53,8 @@ public class GameScreen extends GLScreen {
 	LevelLoader level;
 	Rectangle pauseBounds;
 	Rectangle resumeBounds;
+	Rectangle scrollUpBounds;
+	Rectangle scrollDownBounds;
 
 	int levelNumber;
 	public GameScreen(Game game) {
@@ -87,6 +89,8 @@ public class GameScreen extends GLScreen {
 		renderer= new WorldRenderer(glGraphics, batcher, world);
 		pauseBounds = new Rectangle(320-32,0,64,64);
 		resumeBounds = new Rectangle(320-32,0,64,64);
+		scrollUpBounds = new Rectangle(160,480-32,64,64);
+		scrollDownBounds = new Rectangle(160,64+16,64,64);
 
 	}
 
@@ -131,6 +135,7 @@ public class GameScreen extends GLScreen {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		batcher.beginBatch(Assets.items);
+		renderControlPanel();
 		switch(state) {
 		case GAME_READY:
 			break;
@@ -249,7 +254,13 @@ public class GameScreen extends GLScreen {
 				world.controlPanel.currentPanel=0;
 				world.robot.setState(world.controlPanel.commands[0][0]);
 				return;
-			}else{
+			}else if(OverlapTester.pointInRectangle(scrollUpBounds, touchPoint)){
+				if(world.camPos[1]<World.WORLD_HEIGHT) world.camPos[1]+=1.0f;
+				
+			}else if(OverlapTester.pointInRectangle(scrollDownBounds, touchPoint)){
+				if(world.camPos[1]>World.WORLD_HEIGHT/40) world.camPos[1]-=1.0f;
+			}
+			else{
 				world.controlPanel.menu(touchPoint);
 
 				return;
@@ -290,12 +301,16 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentRunning() {
-		batcher.drawSprite(320-16, 40, 32, 50,  Assets.pause);
+		renderControlPanel();
+		batcher.drawSprite(320-16, 32, 32, 50,  Assets.pause);
 		// Assets.font.drawText(batcher, scoreString, 16, 480-20);
 	}
 
-	private void presentPaused() {        
-		batcher.drawSprite(320-16, 40, 32, 50, Assets.play);
+	private void presentPaused() { 
+		batcher.drawSprite(160, 480-16, 32, 32, 180, Assets.scroll);
+		if(world.camPos[1]>World.WORLD_HEIGHT/40)
+			batcher.drawSprite(160, 64+32, 32, 32, Assets.scroll);
+		batcher.drawSprite(320-16, 32, 32, 50, Assets.play);
 		//        Assets.font.drawText(batcher, scoreString, 16, 480-20);
 	}
 
@@ -316,4 +331,40 @@ public class GameScreen extends GLScreen {
 	}
 
 
+	private void renderControlPanel(){
+		batcher.drawSprite(160, 32, 320, 64, Assets.controlpanel);
+		switch(world.controlPanel.currentPanel){
+		case 1: 
+			batcher.drawSprite(16,32,32,32,Assets.one);
+			break;
+		default: 
+			batcher.drawSprite(16,32,32,32,Assets.zero);
+			break;
+		}
+		
+		if(world.controlPanel.active>0) batcher.drawSprite(32*(world.controlPanel.active)+16, 32, 32, 64, Assets.active);
+
+		for(int i =0; i<8; i++){
+			switch(world.controlPanel.commands[world.controlPanel.currentPanel][i]){
+			case 1:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40,Assets.move);
+				break;
+			case 2:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40,Assets.turnleft);
+				break;
+			case 3:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.turnright);
+				break;
+			case 4:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.one);
+				break;
+			default: 
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.wait);
+				break;
+
+
+
+			}
+		}
+	}
 }

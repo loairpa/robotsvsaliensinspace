@@ -125,6 +125,7 @@ public class TutorialScreen extends GLScreen {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		batcher.beginBatch(Assets.items);
+		renderControlPanel();
 		switch(state) {
 		case GAME_RUNNING:
 			presentRunning();
@@ -258,6 +259,41 @@ public class TutorialScreen extends GLScreen {
 		batcher.drawSprite(320-16, 40, 32, 50, Assets.play);
 	}
 
+	private void renderControlPanel(){
+		batcher.drawSprite(160, 32, 320, 64, Assets.controlpanel);
+		switch(world.controlPanel.currentPanel){
+		case 1: 
+			batcher.drawSprite(16,32,32,32,Assets.one);
+			break;
+		default: 
+			batcher.drawSprite(16,32,32,32,Assets.zero);
+			break;
+		}
+		
+		if(world.controlPanel.active>0) batcher.drawSprite(32*(world.controlPanel.active)+16, 32, 32, 64, Assets.active);
+		
+		for(int i =0; i<8; i++){
+			switch(world.controlPanel.commands[world.controlPanel.currentPanel][i]){
+			case 1:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40,Assets.move);
+				break;
+			case 2:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40,Assets.turnleft);
+				break;
+			case 3:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.turnright);
+				break;
+			case 4:
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.one);
+				break;
+			default: 
+				batcher.drawSprite(32*(i+1)+16, 32, 32, 40, Assets.wait);
+				break;
 
+
+
+			}
+		}
+	}
 
 }

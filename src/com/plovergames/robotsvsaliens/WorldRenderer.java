@@ -40,11 +40,14 @@ public class WorldRenderer {
 		this.world=world;
 		this.cam= new Camera2D(glGraphics, FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
 		this.batcher=batcher;
+
 	}
 
 	public void render(){
-		//if(world.robot.position.y>cam.position.y)
-		//cam.position.y=world.robot.position.y;
+		if(world.controlPanel.active==0)
+			cam.position.y = world.camPos[1];
+		else//world.robot.position.y<cam.position.y)
+			cam.position.y=world.robot.position.y;
 		cam.setViewportAndMatrices();
 		renderBackground();
 		renderObjects();
@@ -52,20 +55,21 @@ public class WorldRenderer {
 
 	public void renderBackground() {
 		batcher.beginBatch(Assets.background);
-		batcher.drawSprite(cam.position.x, cam.position.y,
-				FRUSTUM_WIDTH, FRUSTUM_HEIGHT, 
+		batcher.drawSprite(cam.position.x, cam.position.y, FRUSTUM_WIDTH, FRUSTUM_HEIGHT-2f, 
 				Assets.backgroundRegion);
 		batcher.endBatch();
 	}
 
+	
 	public void renderObjects() {
 		GL10 gl = glGraphics.getGL();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
 		batcher.beginBatch(Assets.items);
-		renderInstructions();
-		renderControlPanel();
+		if(world.controlPanel.active==0)
+			renderInstructions();
+		
 		renderShip();
 		renderItems();
 		renderBelt();
@@ -184,41 +188,6 @@ public class WorldRenderer {
 			
 		}
 	}
-	private void renderControlPanel() {
-		batcher.drawSprite(7.5f, 1f, 15, 2f, Assets.controlpanel);
-		switch(world.controlPanel.currentPanel){
-		case 1: 
-			batcher.drawSprite(0.75f,1f,1.0f,1.0f,Assets.one);
-			break;
-		default: 
-			batcher.drawSprite(0.75f,1f,1.0f,1.0f,Assets.zero);
-			break;
-		}
-		
-		if(world.controlPanel.active>0) batcher.drawSprite(1.5f*(world.controlPanel.active)+0.8f, 1f, 1.5f, 2f, Assets.active);
-
-		for(int i =0; i<8; i++){
-			switch(world.controlPanel.commands[world.controlPanel.currentPanel][i]){
-			case 1:
-				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f,Assets.move);
-				break;
-			case 2:
-				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f,Assets.turnleft);
-				break;
-			case 3:
-				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f, Assets.turnright);
-				break;
-			case 4:
-				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.f, Assets.one);
-				break;
-			default: 
-				batcher.drawSprite(1.5f*(i+1)+0.8f, 1f, 1.f, 1.5f, Assets.wait);
-				break;
-
-
-
-			}
-		}
-	}
+	
 
 }
