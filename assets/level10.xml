@@ -29,7 +29,7 @@
     <ship> <x>2.0</x>  <y>8.0</y> </ship>
     <ship> <x>2.0</x>  <y>6.0</y> </ship>
     
-    <robot> <x>6.0</x>  <y>9.0</y> </robot>
+    <robot> <x>7.0</x>  <y>7.0</y> </robot>
      
      
     <button><x>2.0</x> <y>8.0</y> </button>
@@ -48,4 +48,6 @@
 	<controlpanel><nr>2</nr></controlpanel>
 	<instructions><x> 1.0</x><y>4</y><text>Congratulations! You have unlocked an extra ControlPanel!!It can be called from 0 loopas often as you need.Program it by pressing the 0. </text></instructions>
 	
+	<rotator><x>3.0</x><y>5.0</y><dir>-1</dir></rotator>
+	<rotator><x>6.0</x><y>7.0</y><dir>-1</dir></rotator>
 </level>

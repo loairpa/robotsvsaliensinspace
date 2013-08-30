@@ -123,7 +123,7 @@ public class OverlapTester {
 			return false; 
 
 	}
-	
+
 	public static boolean overlapHalfXRectangles(Rectangle r1, Rectangle r2, int direction) {
 		switch(direction){
 		case 0:

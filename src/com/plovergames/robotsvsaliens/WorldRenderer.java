@@ -174,11 +174,20 @@ public class WorldRenderer {
 
 	}
 
+
 	private void renderItems() {
 		batcher.drawSprite(world.button.position.x,world.button.position.y,SelfDestructButton.BUTTON_WIDTH,SelfDestructButton.BUTTON_HEIGHT,Assets.selfdestructbutton);
 		int len = world.airlocks.size();
 		for(int i = 0; i<len;i++){
 			batcher.drawSprite(world.airlocks.get(i).position.x, world.airlocks.get(i).position.y, Airlock.AIRLOCK_WIDTH, Airlock.AIRLOCK_HEIGHT, Assets.airlock);
+		}
+		
+		len = world.rotators.size();
+	;
+		for(int i=0; i<len; i++){
+			Rotator rotator = world.rotators.get(i);
+			batcher.drawSprite(rotator.position.x, rotator.position.y, rotator.direction*Robot.ROBOT_WIDTH, Robot.ROBOT_HEIGHT,rotator.spin ,Assets.rotator);        
+
 		}
 
 

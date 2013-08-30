@@ -53,15 +53,18 @@ public class World {
 	public List <Airlock> airlocks;
 	public List <Conveyorbelt> conveyorbelts;
 	public List <Instructions> instructions; 
-	public List <ControlPanel> controlpanel;
+	public List <Rotator> rotators;
+
 	public int score; 
 	public int state;
 	public boolean tutorial = false;
 	public float[] camPos;
 	public LevelLoader level;
-	
+
 	private boolean wasOnBelt = false;
+	private boolean rotated = false;
 	private int robotOnBelt;
+	private int robotOnRotator;
 	private float oldDeltaTime=0.0f;
 	private Vector2 oldPosition; 
 	public World(LevelLoader level) throws XmlPullParserException, IOException{
@@ -75,10 +78,11 @@ public class World {
 		this.aliens =  new ArrayList<Alien>();
 		this.lasers = new ArrayList<Laser>();
 		this.airlocks = new ArrayList<Airlock>();
+		this.rotators = new ArrayList<Rotator>();
 		this.conveyorbelts = new ArrayList<Conveyorbelt>();
 		this.instructions = new ArrayList<Instructions>();//new Instructions(0,0,"");
 		this.controlPanel = new ControlPanel();
-		
+
 		this.camPos = new float[2];
 		generatelevel();
 	}
@@ -90,9 +94,10 @@ public class World {
 		airlocks.clear();
 		conveyorbelts.clear();
 		instructions.clear();
+		rotators.clear();
 		robot = new Robot();
 		button = new SelfDestructButton();
-		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions,controlPanel);
+		level.loadLevel(ship,robot,button,aliens,lasers,airlocks,conveyorbelts,instructions,rotators,controlPanel);
 		oldPosition = new Vector2(robot.position.x,robot.position.y);
 		camPos[0]=WORLD_WIDTH/2;
 		camPos[1]=WORLD_HEIGHT/40;
@@ -110,19 +115,19 @@ public class World {
 	private void updateRobot(float deltaTime){
 
 		if(controlPanel.active >8) return;
-		
+
 		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.NEXT_PANEL){
 			controlPanel.activePanel[controlPanel.currentPanel]=controlPanel.active+1;
 			controlPanel.currentPanel++;
 			controlPanel.active=1;
 			robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 		}
-		
+
 		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() ){
 			oldDeltaTime = 0.0f;
 			robot.update(deltaTime);
 			if(oldPosition.dist(robot.position)>=1.0f){
-//				Log.d("oldPosition",""+robot.position.x);
+				//				Log.d("oldPosition",""+robot.position.x);
 				updateControlPanel();
 				oldPosition.set(robot.position);
 				if(controlPanel.active==9) controlPanel.end=true;
@@ -132,12 +137,13 @@ public class World {
 		}
 		else{
 			oldDeltaTime+=deltaTime;
-			
+
 			if(checkAtEdge())
 				robot.hitEdge();
-		
-			
+
+
 			if(oldDeltaTime >=1.0f){
+				rotated = false;
 				oldDeltaTime=0.0f;
 				updateControlPanel();	
 				oldPosition.set(robot.position);
@@ -150,17 +156,17 @@ public class World {
 			return;
 		}
 		if(checkAlienCollision()){ 
-			Log.d("checkCollision()","True");
+			Log.d("checkAlienCollision()","True");
 			robot.state= Robot.ROBOT_STATE_DEAD;
-//			controlPanel.end= true;
+			//			controlPanel.end= true;
 		}
 		if(checkLaserCollision()){
 			Log.d("CheckLaserCollision","True");
-//			if(robot.state == Robot.ROBOT_STATE_ACTIVE){
-				robot.state = Robot.ROBOT_HIT_BY_LASER; 
-//			}
-//			robot.state = Robot.ROBOT_HIT_BY_LASER;
-//			robot.update(deltaTime);
+			//			if(robot.state == Robot.ROBOT_STATE_ACTIVE){
+			robot.state = Robot.ROBOT_HIT_BY_LASER; 
+			//			}
+			//			robot.state = Robot.ROBOT_HIT_BY_LASER;
+			//			robot.update(deltaTime);
 		}
 		if(checkAirlockCollision()){
 			Log.d("checkAirlockCollision()","True");
@@ -172,18 +178,33 @@ public class World {
 			controlPanel.paused=true;
 			Log.d("checkAtBelt","True");	
 		}
+		
+		if(checkOnRotator() && !rotated ){
+			Log.d("checkOnRotator","True");
+			if(rotators.get(robotOnRotator).direction== Rotator.COUNTER_CLOCKWISE){
+				robot.direction+=90;
+				robot.position.x = Math.round(robot.position.x)+0.1f;
+				robot.position.y = Math.round(robot.position.y);
+				robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+				if(robot.direction >270) robot.direction =0;
+				rotated = true;
+			}
+			else{
+				robot.direction-=90;
+				robot.position.x = Math.round(robot.position.x)+0.1f;
+				robot.position.y = Math.round(robot.position.y);
+				robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+				if(robot.direction <0) robot.direction =270;
+				rotated = true;
+			}
+
+		}
+		
 		else controlPanel.paused = false;
 	}
 
 	private void updateControlPanel(){
 		controlPanel.update();
-//		if(robot.state==Robot.ROBOT_HIT_BY_LASER){
-////			controlPanel.update();
-//			robot.state = Robot.ROBOT_STATE_ACTIVE;
-//		}
-
-		Log.v("currentPanel",""+controlPanel.currentPanel);
-		Log.v("controlPanel active",""+controlPanel.active);
 		robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 	}
 
@@ -217,8 +238,8 @@ public class World {
 			robotAfterBelt(robotOnBelt);
 			wasOnBelt = false;
 			controlPanel.paused = false;
-		updateControlPanel();
-//			
+			updateControlPanel();
+			//			
 		}
 		return false;
 	}
@@ -229,19 +250,19 @@ public class World {
 		switch(dir){
 		case 0: 
 			oldPosition.set(belt.position);
-//			Log.v("0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 90:
 			oldPosition.set(belt.position);
-//			Log.v("90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 180:
 			oldPosition.set(belt.position);
-//			Log.v("180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 270: 
 			oldPosition.set(belt.position);
-//			Log.v("270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		default:
 			break;
@@ -249,7 +270,7 @@ public class World {
 
 
 	}
-	
+
 	private void robotAfterBelt(int currentbelt){
 		Conveyorbelt belt = conveyorbelts.get(currentbelt);
 		int dir = belt.direction;
@@ -284,9 +305,9 @@ public class World {
 			break;
 		default:
 			break;
-		
+
 		}
-		
+
 	}
 
 	private boolean checkAtButton(){
@@ -316,10 +337,10 @@ public class World {
 			}
 			int lenbeam = laser.beam.size();
 			for(int j =0; j<lenbeam;j++){
-//				if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.beam.get(j).bounds))
+				//				if(OverlapTester.overlapHalfRectangles(robot.bounds,laser.beam.get(j).bounds))
 				if(laser.beam.get(j).touched == 0 && OverlapTester.overlapLaser(robot.bounds,laser.beam.get(j).bounds)){
 					laser.beam.get(j).touched =  Math.abs(laser.beam.get(j).touched-1);
-				return true;
+					return true;
 				}
 			}
 
@@ -332,6 +353,21 @@ public class World {
 			if(OverlapTester.overlapHalfRectangles(robot.bounds, airlocks.get(i).bounds))
 				return true;
 		}return false;
+	}
+
+	private boolean checkOnRotator(){
+		for(int i=0; i<rotators.size();i++){
+			if(OverlapTester.overlapHalfRectangles(robot.bounds, rotators.get(i).bounds)){
+				robotOnRotator = i;
+				Log.d("Direction",""+robot.direction);
+				return true;
+				}
+				
+			}			
+		if(rotated)
+			rotated = false;
+		
+		return false;
 	}
 
 	private void updateAlien(float deltaTime){
@@ -359,6 +395,9 @@ public class World {
 	private void updateItems(float deltaTime){
 		for(int i = 0; i<conveyorbelts.size();i++){
 			conveyorbelts.get(i).update(deltaTime);
+		}
+		for(int i = 0; i<rotators.size();i++){
+			rotators.get(i).update(deltaTime);
 		}
 	}
 }

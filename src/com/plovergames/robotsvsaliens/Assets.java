@@ -63,7 +63,9 @@ public class Assets {
     public static Animation robotHitByLaser;
  
     public static Animation alienAnim;
-    public static Animation conveyorbelt;   
+    public static Animation conveyorbelt; 
+    
+    public static TextureRegion rotator;
     public static Font font;
 
 
@@ -136,6 +138,8 @@ public class Assets {
         conveyorbelt = new Animation(0.2f,                                 
            new TextureRegion(items,61, 160, 16, 32),
              new TextureRegion(items, 81,160,  16, 32));
+        
+        rotator = new TextureRegion(items, 224,160,30,32);
 
 
         font = new Font(items,8, 160+32, 16, 16, 20);
