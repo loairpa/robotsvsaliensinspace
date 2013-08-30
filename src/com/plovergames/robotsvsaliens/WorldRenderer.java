@@ -76,6 +76,8 @@ public class WorldRenderer {
 		renderRobot();
 		renderAlien();
 		renderLaser();
+		if(world.state == World.WORLD_STATE_NEXT_LEVEL)
+			renderExplosion();
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 	}
@@ -216,4 +218,9 @@ public class WorldRenderer {
 	}
 
 
+	private float scaler =0.0f;
+	private void renderExplosion(){
+		scaler +=0.1f;
+		batcher.drawSprite(world.button.position.x, world.button.position.y, scaler*1.0f, scaler*1.0f, Assets.explosion);
+	}
 }

@@ -43,6 +43,7 @@ public class TutorialScreen extends GLScreen {
 
 
 	int state;
+	float levelEndTime =0.0f;
 	Camera2D guiCam;
 	Vector2 touchPoint; 
 	SpriteBatcher batcher;
@@ -75,7 +76,7 @@ public class TutorialScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		tutorialNumber=1;
+		tutorialNumber=4;
 		String filename = "tutorial"+tutorialNumber+".xml";
 
 		try{
@@ -105,7 +106,7 @@ public class TutorialScreen extends GLScreen {
 				updatePaused(deltaTime);
 				break;
 			case GAME_LEVEL_END:
-				updateLevelEnd();
+				updateLevelEnd(deltaTime);
 				break;
 			}
 		}catch (Exception e) {
@@ -136,7 +137,7 @@ public class TutorialScreen extends GLScreen {
 			presentPaused();
 			break;
 		case GAME_LEVEL_END:
-			presentPaused();
+			presentLevelEnd();
 			break;
 		}
 		batcher.endBatch();
@@ -235,8 +236,9 @@ public class TutorialScreen extends GLScreen {
 		}
 	}
 
-	private void updateLevelEnd() throws XmlPullParserException, IOException {
-
+	private void updateLevelEnd(float deltaTime) throws XmlPullParserException, IOException {
+		
+		if(levelEndTime>1.0f){
 		tutorialNumber +=1;
 		if(tutorialNumber >MAX_LEVEL){
 			game.setScreen(new MainMenuScreen(game));
@@ -252,7 +254,12 @@ public class TutorialScreen extends GLScreen {
 			e.printStackTrace();
 		}
 		renderer = new WorldRenderer(glGraphics, batcher, world);
-		state = GAME_PAUSED;
+		levelEndTime =0.0f;
+		state= GAME_PAUSED;
+		}else{
+			levelEndTime +=deltaTime;
+			state = GAME_LEVEL_END;
+		}
 
 	}
 
@@ -264,6 +271,9 @@ public class TutorialScreen extends GLScreen {
 		batcher.drawSprite(320-16, 40, 32, 32, Assets.play);
 	}
 
+	private void presentLevelEnd() {
+		batcher.drawSprite(320-16, 40, 32, 32, Assets.play);
+	}
 	private void renderControlPanel(){
 		batcher.drawSprite(160, 32, 320, 64, Assets.controlpanel);
 		switch(world.controlPanel.currentPanel){

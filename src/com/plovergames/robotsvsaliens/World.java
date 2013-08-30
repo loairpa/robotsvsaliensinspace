@@ -164,6 +164,7 @@ public class World {
 			Log.d("CheckLaserCollision","True");
 			//			if(robot.state == Robot.ROBOT_STATE_ACTIVE){
 			robot.state = Robot.ROBOT_HIT_BY_LASER; 
+			controlPanel.update();
 			//			}
 			//			robot.state = Robot.ROBOT_HIT_BY_LASER;
 			//			robot.update(deltaTime);
@@ -205,6 +206,8 @@ public class World {
 
 	private void updateControlPanel(){
 		controlPanel.update();
+//		if(robot.state==Robot.ROBOT_HIT_BY_LASER) controlPanel.update();
+		
 		robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 	}
 
