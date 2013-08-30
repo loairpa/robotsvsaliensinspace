@@ -60,6 +60,7 @@ public class Assets {
     public static Animation robotDownAnim;
     public static Animation robotUpAnim;
     public static Animation robotSideAnim;
+    public static Animation robotHitByLaser;
  
     public static Animation alienAnim;
     public static Animation conveyorbelt;   
@@ -123,6 +124,10 @@ public class Assets {
 				new TextureRegion(items,98+32,100,32,30), 
 				new TextureRegion(items, 98,100,32,30),
 				new TextureRegion(items,98+64,100,30,30));
+        
+        robotHitByLaser = new Animation(0.2f, new TextureRegion(items, 192, 160, 30, 32), 
+        		new TextureRegion(items, 98,160,30,32));
+        				
         
         alienAnim = new Animation(0.2f,                                 
               new TextureRegion(items, 32, 98, 32, 32),

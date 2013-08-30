@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.plovergames.robotsvsaliens"
     android:versionCode="1"
-    android:versionName="2013-7-11" >
+    android:versionName="alpha: 2013-8-30" >
 
     <uses-sdk
         android:minSdkVersion="8"

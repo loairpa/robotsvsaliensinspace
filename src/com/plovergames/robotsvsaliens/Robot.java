@@ -57,7 +57,7 @@ public class Robot extends DynamicGameObject {
 		
 
 		
-		if(state == ROBOT_STATE_ACTIVE || state == ROBOT_HIT_BY_LASER){
+		if(state == ROBOT_STATE_ACTIVE ){
 			
 		switch(direction){
 		case ROBOT_DOWN:
@@ -78,17 +78,17 @@ public class Robot extends DynamicGameObject {
 		}
 		
 		walkTime +=deltaTime;
-		}else if(state==ROBOT_STATE_TURNING ){
+		}else if(state==ROBOT_STATE_TURNING ||  state == ROBOT_HIT_BY_LASER ){
 			velocity.set(0,0);
 			stateTime+=deltaTime;
 			if(stateTime>1.0f){
 				state= ROBOT_STATE_ACTIVE;
 				stateTime=0.0f;
 			}
+			
 		}
 			
-			
-
+		
 		position.add(velocity.x*deltaTime, velocity.y*deltaTime);
 		bounds.lowerLeft.set(position).sub(bounds.width/2, bounds.height/2);
 /*		Log.d("Direction",""+direction);

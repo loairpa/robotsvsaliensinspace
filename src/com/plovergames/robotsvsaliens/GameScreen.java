@@ -302,7 +302,7 @@ public class GameScreen extends GLScreen {
 
 	private void presentRunning() {
 		renderControlPanel();
-		batcher.drawSprite(320-16, 32, 32, 50,  Assets.pause);
+		batcher.drawSprite(320-16, 32, 32, 32,  Assets.pause);
 		// Assets.font.drawText(batcher, scoreString, 16, 480-20);
 	}
 
@@ -310,7 +310,7 @@ public class GameScreen extends GLScreen {
 		batcher.drawSprite(160, 480-16, 32, 32, 180, Assets.scroll);
 		if(world.camPos[1]>World.WORLD_HEIGHT/40)
 			batcher.drawSprite(160, 64+32, 32, 32, Assets.scroll);
-		batcher.drawSprite(320-16, 32, 32, 50, Assets.play);
+		batcher.drawSprite(320-16, 32, 32, 32, Assets.play);
 		//        Assets.font.drawText(batcher, scoreString, 16, 480-20);
 	}
 

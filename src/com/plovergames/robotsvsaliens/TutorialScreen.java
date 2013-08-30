@@ -75,15 +75,17 @@ public class TutorialScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		tutorialNumber=1;
+		tutorialNumber=6;
 		String filename = "tutorial"+tutorialNumber+".xml";
 
 		try{
 			tutorial =new LevelLoader(game, filename);
-			world = new World(tutorial);}
+			world = new World(tutorial);
+			}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		world.tutorial= true;
 		renderer= new WorldRenderer(glGraphics, batcher, world);
 		pauseBounds = new Rectangle(320-32,0,64,64);
 		resumeBounds = new Rectangle(320-32,0,64,64);
@@ -177,6 +179,7 @@ public class TutorialScreen extends GLScreen {
 				world.controlPanel.currentPanel=0;
 				//				world.controlPanel.end= false;
 				world.generatelevel();
+				world.tutorial = true;
 				return;
 			}
 		}
@@ -190,6 +193,7 @@ public class TutorialScreen extends GLScreen {
 			world.controlPanel.paused=true;
 			world.controlPanel.end=false;
 			world.generatelevel();
+			world.tutorial= true;
 			return;
 		}
 
@@ -242,7 +246,8 @@ public class TutorialScreen extends GLScreen {
 
 		try{
 			tutorial =new LevelLoader(game, filename);
-			world = new World(tutorial);}
+			world = new World(tutorial);
+			world.tutorial =true;}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -252,11 +257,11 @@ public class TutorialScreen extends GLScreen {
 	}
 
 	private void presentRunning() {
-		batcher.drawSprite(320-16, 40, 32, 50,  Assets.pause);
+		batcher.drawSprite(320-16, 40, 32, 32,  Assets.pause);
 	}
 
 	private void presentPaused() {        
-		batcher.drawSprite(320-16, 40, 32, 50, Assets.play);
+		batcher.drawSprite(320-16, 40, 32, 32, Assets.play);
 	}
 
 	private void renderControlPanel(){

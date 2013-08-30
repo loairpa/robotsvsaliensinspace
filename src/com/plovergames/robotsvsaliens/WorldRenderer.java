@@ -44,9 +44,9 @@ public class WorldRenderer {
 	}
 
 	public void render(){
-		if(world.controlPanel.active==0)
+		if(world.controlPanel.active==0 || world.tutorial)
 			cam.position.y = world.camPos[1];
-		else//world.robot.position.y<cam.position.y)
+		else
 			cam.position.y=world.robot.position.y;
 		cam.setViewportAndMatrices();
 		renderBackground();
@@ -97,37 +97,136 @@ public class WorldRenderer {
 		TextureRegion keyFrame;
 		float side = 1;   
 
-		switch(world.robot.direction) {
-		case Robot.ROBOT_DOWN:
-			keyFrame = Assets.robotDownAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
-			direction =0; 
-			shrink =1;
+		switch(world.robot.state){
+		case Robot.ROBOT_STATE_ACTIVE:
+			switch(world.robot.direction) {
+			case Robot.ROBOT_DOWN:
+				keyFrame = Assets.robotDownAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_LEFT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_RIGHT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				side=-1;
+				break;
+			case Robot.ROBOT_UP:
+				keyFrame = Assets.robotUpAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			default:
+				keyFrame = Assets.robotStop;    
+				break;
+			}
 			break;
-		case Robot.ROBOT_LEFT:
-			keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
-			direction =0; 
-			shrink =1;
+		case Robot.ROBOT_STATE_STOP:
+			switch(world.robot.direction) {
+			case Robot.ROBOT_DOWN:
+				keyFrame = Assets.robotDownAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_LEFT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_RIGHT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				side=-1;
+				break;
+			case Robot.ROBOT_UP:
+				keyFrame = Assets.robotUpAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			default:
+				keyFrame = Assets.robotStop;    
+				break;
+			}
 			break;
-		case Robot.ROBOT_RIGHT:
-			keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
-			direction =0; 
-			shrink =1;
-			side=-1;
+		case Robot.ROBOT_STATE_TURNING:
+			switch(world.robot.direction) {
+			case Robot.ROBOT_DOWN:
+				keyFrame = Assets.robotDownAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_LEFT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_RIGHT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				side=-1;
+				break;
+			case Robot.ROBOT_UP:
+				keyFrame = Assets.robotUpAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			default:
+				keyFrame = Assets.robotStop;    
+				break;
+			}
 			break;
-		case Robot.ROBOT_UP:
-			keyFrame = Assets.robotUpAnim.getKeyFrames(world.robot.walkTime, Animation.ANIMATION_LOOPING);
-			direction =0; 
-			shrink =1;
+		case Robot.ROBOT_STATE_ON_BELT:
+			switch(world.robot.direction) {
+			case Robot.ROBOT_DOWN:
+				keyFrame = Assets.robotDownAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_LEFT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			case Robot.ROBOT_RIGHT:
+				keyFrame = Assets.robotSideAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				side=-1;
+				break;
+			case Robot.ROBOT_UP:
+				keyFrame = Assets.robotUpAnim.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+				direction =0; 
+				shrink =1;
+				break;
+			default:
+				keyFrame = Assets.robotStop;    
+				break;
+			}
 			break;
 		case Robot.ROBOT_STATE_DEAD:
 			keyFrame = Assets.robotStop;
 			direction +=10;
 			if(shrink>0)shrink -=0.01f;
+			else world.controlPanel.end =true;
 			break;
+		case Robot.ROBOT_HIT_BY_LASER:
+			keyFrame = Assets.robotHitByLaser.getKeyFrames(world.robot.stateTime, Animation.ANIMATION_LOOPING);
+			direction = 0; 
+			shrink = 1; 
+			break;
+		
 		default:
-			keyFrame = Assets.robotStop;                       
-		}
+			keyFrame = Assets.robotStop;
+			break;
 
+		}
 
 		batcher.drawSprite(world.robot.position.x, world.robot.position.y, shrink*side*Robot.ROBOT_WIDTH, shrink*Robot.ROBOT_HEIGHT,direction ,keyFrame);        
 	}

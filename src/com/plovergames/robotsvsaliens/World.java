@@ -56,6 +56,7 @@ public class World {
 	public List <ControlPanel> controlpanel;
 	public int score; 
 	public int state;
+	public boolean tutorial = false;
 	public float[] camPos;
 	public LevelLoader level;
 	
@@ -162,7 +163,7 @@ public class World {
 		}
 		if(checkAirlockCollision()){
 			Log.d("checkAirlockCollision()","True");
-			robot.direction = Robot.ROBOT_STATE_DEAD;
+			robot.state = Robot.ROBOT_STATE_DEAD;
 		}
 
 		if(checkAtBelt(deltaTime)){
@@ -175,10 +176,10 @@ public class World {
 
 	private void updateControlPanel(){
 		controlPanel.update();
-		if(robot.state==Robot.ROBOT_HIT_BY_LASER){
-			controlPanel.update();
-			robot.state = Robot.ROBOT_STATE_ACTIVE;
-		}
+//		if(robot.state==Robot.ROBOT_HIT_BY_LASER){
+////			controlPanel.update();
+//			robot.state = Robot.ROBOT_STATE_ACTIVE;
+//		}
 
 		Log.v("currentPanel",""+controlPanel.currentPanel);
 		Log.v("controlPanel active",""+controlPanel.active);
