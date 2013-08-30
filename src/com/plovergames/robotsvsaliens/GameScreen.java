@@ -89,8 +89,8 @@ public class GameScreen extends GLScreen {
 		renderer= new WorldRenderer(glGraphics, batcher, world);
 		pauseBounds = new Rectangle(320-32,0,64,64);
 		resumeBounds = new Rectangle(320-32,0,64,64);
-		scrollUpBounds = new Rectangle(160,480-32,64,64);
-		scrollDownBounds = new Rectangle(160,64+16,64,64);
+		scrollUpBounds = new Rectangle(160-16,480-32,32,64);
+		scrollDownBounds = new Rectangle(160-16,64+16,32,64);
 
 	}
 
