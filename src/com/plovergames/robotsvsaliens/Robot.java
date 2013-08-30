@@ -38,6 +38,7 @@ public class Robot extends DynamicGameObject {
     public static final int ROBOT_STATE_ON_BELT=3;
     public static final int ROBOT_STATE_DEAD = 4;
     public static final int ROBOT_HIT_BY_LASER = 5;
+    public static final int ROBOT_CAUGHT_IN_AIRLOCK =6;
 
     
     int direction; 

@@ -151,7 +151,8 @@ public class World {
 		}
 		if(checkAlienCollision()){ 
 			Log.d("checkCollision()","True");
-			controlPanel.end= true;
+			robot.state= Robot.ROBOT_STATE_DEAD;
+//			controlPanel.end= true;
 		}
 		if(checkLaserCollision()){
 			Log.d("CheckLaserCollision","True");
@@ -296,8 +297,9 @@ public class World {
 
 	private boolean checkAlienCollision(){
 		for(int i=0; i<aliens.size();i++){		
-			if(OverlapTester.overlapHalfRectangles(robot.bounds,aliens.get(i).bounds))
-				return true;
+			if(OverlapTester.overlapHalfRectangles(robot.bounds,aliens.get(i).bounds)){
+				aliens.get(i).velocity.set(0,0);
+				return true;}
 		}
 		return false;
 	}
