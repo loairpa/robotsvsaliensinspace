@@ -36,7 +36,6 @@ import com.plovergames.framework.math.Vector2;
 
 public class GameScreen extends GLScreen {
 
-	static final int MAX_LEVEL =10;
 	static final int GAME_READY =0;
 	static final int GAME_RUNNING =1;
 	static final int GAME_PAUSED =2;
@@ -55,8 +54,16 @@ public class GameScreen extends GLScreen {
 	Rectangle resumeBounds;
 	Rectangle scrollUpBounds;
 	Rectangle scrollDownBounds;
+	// TODO:  
+	Rectangle scrollLeftBounds; 
+	Rectangle scrollRightBounds; 
+	
+	
+	Rectangle zoomInBounds; 
+	Rectangle zoomOutBounds;
 
 	int levelNumber;
+	float levelEndTime=0.0f;
 	public GameScreen(Game game) {
 		super(game);
 		state = GAME_PAUSED;
@@ -77,7 +84,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=10;
+		levelNumber=4;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -90,7 +97,10 @@ public class GameScreen extends GLScreen {
 		pauseBounds = new Rectangle(320-32,0,64,64);
 		resumeBounds = new Rectangle(320-32,0,64,64);
 		scrollUpBounds = new Rectangle(160-16,480-32,32,64);
-		scrollDownBounds = new Rectangle(160-16,64+16,32,64);
+		scrollDownBounds = new Rectangle(160-16,64,32,64);
+		
+		zoomInBounds = new Rectangle(0,480-32,32,50);
+		zoomOutBounds = new Rectangle(0,480-100,32,50);
 
 	}
 
@@ -110,7 +120,7 @@ public class GameScreen extends GLScreen {
 				updatePaused(deltaTime);
 				break;
 			case GAME_LEVEL_END:
-				updateLevelEnd();
+				updateLevelEnd(deltaTime);
 				break;
 			case GAME_OVER:
 				updateGameOver();
@@ -146,7 +156,7 @@ public class GameScreen extends GLScreen {
 			presentPaused();
 			break;
 		case GAME_LEVEL_END:
-			presentPaused();
+			presentLevelEnd();
 			break;
 		case GAME_OVER:
 			presentGameOver();
@@ -193,7 +203,6 @@ public class GameScreen extends GLScreen {
 				state = GAME_PAUSED;
 				world.controlPanel.active=0;
 				world.controlPanel.currentPanel=0;
-//				world.controlPanel.end= false;
 				world.generatelevel();
 				return;
 			}
@@ -212,12 +221,6 @@ public class GameScreen extends GLScreen {
 			world.generatelevel();
 			return;
 		}
-		
-/*		if(world.controlPanel.paused==true){
-			state = GAME_PAUSED;
-			world.generatelevel();
-			return;
-		}*/
 
 		if(world.state == World.WORLD_STATE_NEXT_LEVEL){ 
 			state = GAME_LEVEL_END;
@@ -231,7 +234,6 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void updatePaused(float deltaTime) {
-//		Log.d("updatePaused", ""+deltaTime);
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		int len = touchEvents.size();
 		if(world.instructions.size()>0){
@@ -259,6 +261,10 @@ public class GameScreen extends GLScreen {
 				
 			}else if(OverlapTester.pointInRectangle(scrollDownBounds, touchPoint)){
 				if(world.camPos[1]>World.WORLD_HEIGHT/40) world.camPos[1]-=1.0f;
+			}else if(OverlapTester.pointInRectangle(zoomInBounds, touchPoint)){
+				if(renderer.cam.zoom> 1.0f) renderer.cam.zoom-=0.1f;
+			}else if(OverlapTester.pointInRectangle(zoomOutBounds, touchPoint)){
+				Log.v("Zoom Out", ""+touchPoint.x+","+touchPoint.y);
 			}
 			else{
 				world.controlPanel.menu(touchPoint);
@@ -270,13 +276,11 @@ public class GameScreen extends GLScreen {
 		}
 	}
 
-	private void updateLevelEnd() throws XmlPullParserException, IOException {
-
+	private void updateLevelEnd(float deltaTime) throws XmlPullParserException, IOException {
+		
+		if(levelEndTime>1.0f){
 		levelNumber +=1;
-		if(levelNumber >MAX_LEVEL){
-			game.setScreen(new MainMenuScreen(game));
-			return;
-		}
+
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -284,10 +288,18 @@ public class GameScreen extends GLScreen {
 			world = new World(level);}
 		catch (Exception e) {
 			e.printStackTrace();
+			game.setScreen(new MainMenuScreen(game));
+			return;
 		}
 		renderer = new WorldRenderer(glGraphics, batcher, world);
-		//           world.score = lastScore;
 		state = GAME_PAUSED;
+		levelEndTime=0.0f;
+		
+		}else{
+			levelEndTime +=deltaTime;
+			state = GAME_LEVEL_END;
+		}
+		
 
 	}
 
@@ -307,6 +319,9 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentPaused() { 
+
+        Assets.font.drawText(batcher, "+", 10,480-16);
+        Assets.font.drawText(batcher, "-", 10, 480-64);
 		batcher.drawSprite(160, 480-16, 32, 32, 180, Assets.scroll);
 		if(world.camPos[1]>World.WORLD_HEIGHT/40)
 			batcher.drawSprite(160, 64+32, 32, 32, Assets.scroll);
@@ -315,12 +330,8 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentLevelEnd() {
-		//        String topText = "the princess is ...";
-		//        String bottomText = "in another castle!";
-		//        float topWidth = Assets.font.glyphWidth * topText.length();
-		//        float bottomWidth = Assets.font.glyphWidth * bottomText.length();
-		//        Assets.font.drawText(batcher, topText, 160 - topWidth / 2, 480 - 40);
-		//        Assets.font.drawText(batcher, bottomText, 160 - bottomWidth / 2, 40);
+		batcher.drawSprite(320-16, 16, 32, 32, Assets.pause);
+
 	}
 
 	private void presentGameOver() {

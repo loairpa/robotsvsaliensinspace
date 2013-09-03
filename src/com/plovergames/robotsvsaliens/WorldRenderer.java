@@ -55,7 +55,7 @@ public class WorldRenderer {
 
 	public void renderBackground() {
 		batcher.beginBatch(Assets.background);
-		batcher.drawSprite(cam.position.x, cam.position.y, FRUSTUM_WIDTH, FRUSTUM_HEIGHT-2f, 
+		batcher.drawSprite(cam.position.x, cam.position.y, FRUSTUM_WIDTH*cam.zoom, FRUSTUM_HEIGHT*cam.zoom, 
 				Assets.backgroundRegion);
 		batcher.endBatch();
 	}
@@ -168,11 +168,11 @@ public class WorldRenderer {
 			batcher.drawSprite(shippart.position.x, shippart.position.y, Ship.SHIPPART_WIDTH, Ship.SHIPPART_HEIGHT, Assets.shippart);
 			if(shippart.position.x>lastX) lastX=shippart.position.x;   				
 		}
-		for(int i = 0; i<len; i++){
+/*		for(int i = 0; i<len; i++){
 			Ship shippart = world.ship.get(i); 
 			if(shippart.position.x == lastX)
 				batcher.drawSprite(lastX+0.7f, shippart.position.y,-1,1,Assets.fire);
-		}
+		}*/
 
 	}
 
