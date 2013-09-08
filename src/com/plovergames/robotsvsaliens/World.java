@@ -229,7 +229,7 @@ public class World {
 		int len = conveyorbelts.size();
 		for(int i =0; i<len; i++){
 			Conveyorbelt belt = conveyorbelts.get(i);
-			if(OverlapTester.overlapHalfXRectangles(robot.bounds, belt.bounds, robot.direction)){
+			if(OverlapTester.overlapConveyorbelt(robot.bounds, belt.bounds, robot.direction)){
 				robotOnBelt = i;
 				robot.onConveyorbelt(belt.direction,deltaTime);			
 				moveRobotOnBelt(robotOnBelt);			

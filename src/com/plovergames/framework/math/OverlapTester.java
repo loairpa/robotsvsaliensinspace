@@ -82,8 +82,8 @@ public class OverlapTester {
 				return true;
 			else return false;
 		case 90:
-			if (top.lowerLeft.y >= bottom.lowerLeft.y &&  top.lowerLeft.y+top.height<bottom.lowerLeft.y+bottom.height && 
-				top.lowerLeft.x-0.1f >= bottom.lowerLeft.x && top.lowerLeft.x-0.1f<=bottom.lowerLeft.x+bottom.width)
+			if (top.lowerLeft.y >= bottom.lowerLeft.y  &&  top.lowerLeft.y<bottom.lowerLeft.y+bottom.height && 
+					top.lowerLeft.x -0.1f>= bottom.lowerLeft.x  &&  top.lowerLeft.x-0.1f<=bottom.lowerLeft.x+bottom.width)
 				return true;			
 			else return false;
 
@@ -127,7 +127,7 @@ public class OverlapTester {
 
 	}
 
-	public static boolean overlapHalfXRectangles(Rectangle r1, Rectangle r2, int direction) {
+	public static boolean overlapConveyorbelt(Rectangle r1, Rectangle r2, int direction) {
 		switch(direction){
 		case 0:
 			if(r1.lowerLeft.x < r2.lowerLeft.x + r2.width/2 &&
