@@ -45,11 +45,11 @@
     
      <robot> <x>10.0</x>  <y>9.0</y> </robot>
      <button> <x> 2.0</x> <y>7.0</y></button>
-<!--      <alien> <x>5.0</x> <y>3.0</y><state>0</state></alien>
-     <alien> <x>6.0</x> <y>11.0</y><state>0</state></alien>
+      <alien> <x>5.0</x> <y>3.1</y><state>0</state></alien>
+     <alien> <x>6.0</x> <y>11.1</y><state>0</state></alien>
      <alien> <x>3.0</x> <y>6.0</y><state>90</state></alien>
-    <alien> <x>10.2</x> <y>8.0</y><state>90</state></alien>
-    -->  
+    <alien> <x>10.0</x> <y>8.0</y><state>90</state></alien>
+     
      
      <rotator> <x>3.0</x> <y>7.0</y> <dir>-1</dir></rotator>
      <rotator> <x>6.0</x> <y>9.0</y> <dir>1</dir></rotator>
@@ -57,7 +57,7 @@
      
 	<conveyorbelt> <x>6.0</x> <y>7.0</y> <dir>90</dir></conveyorbelt>
 	<conveyorbelt> <x>6.0</x> <y>8.0</y> <dir>0</dir></conveyorbelt>
-		<conveyorbelt> <x>6.0</x> <y>6.0</y> <dir>180</dir></conveyorbelt>
+		<conveyorbelt> <x>6.0</x> <y>6.0</y> <dir>180</dir></conveyorbelt> 
 	
      	<airlock>  <x>5.0</x>  <y>5.0</y> </airlock>
      	 <airlock>  <x>5.0</x>  <y>9.0</y> </airlock>

@@ -2,19 +2,19 @@
 
 <level>
     <!-- Engines -->
-    <ship> <x>3.0</x>  <y>3.0</y> </ship>
-    <ship> <x>3.0</x>  <y>4.0</y> </ship>
-    <ship> <x>3.0</x>  <y>5.0</y> </ship>
-    <ship> <x>3.0</x> <y>6.0</y> </ship>
-    <ship> <x>3.0</x>  <y>7.0</y> </ship>
-    <ship> <x>3.0</x>  <y>8.0</y> </ship>
-    
     <ship> <x>4.0</x>  <y>3.0</y> </ship>
     <ship> <x>4.0</x>  <y>4.0</y> </ship>
     <ship> <x>4.0</x>  <y>5.0</y> </ship>
     <ship> <x>4.0</x> <y>6.0</y> </ship>
     <ship> <x>4.0</x>  <y>7.0</y> </ship>
     <ship> <x>4.0</x>  <y>8.0</y> </ship>
+    
+    <ship> <x>5.0</x>  <y>3.0</y> </ship>
+    <ship> <x>5.0</x>  <y>4.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>5.0</x> <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>8.0</y> </ship>
     
     <ship> <x>12.0</x>  <y>3.0</y> </ship>
     <ship> <x>12.0</x>  <y>4.0</y> </ship>
@@ -108,19 +108,51 @@
     
 
 
-    <ship> <x>5.0</x>  <y>6.0</y> </ship>
-    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+
     <ship> <x>6.0</x>  <y>6.0</y> </ship>
     <ship> <x>6.0</x>  <y>5.0</y> </ship>
-    <ship> <x>10.0</x>  <y>6.0</y> </ship>
-    <ship> <x>10.0</x>  <y>5.0</y> </ship>
     <ship> <x>11.0</x>  <y>6.0</y> </ship>
     <ship> <x>11.0</x>  <y>5.0</y> </ship>
 
+
     
-     <robot> <x>5.0</x>  <y>6.0</y> </robot>
-     <button> <x> 9.0</x> <y>15.0</y></button>
+     <robot> <x>4.0</x>  <y>8.0</y> </robot>
+     <button> <x> 8.0</x> <y>15.0</y></button>
      
-     <alien> <x> 3.0</x> <y>6.0</y> <state>90</state> </alien> 
+     <conveyorbelt><x>4.0</x><y>5</y><dir>270</dir></conveyorbelt>
+     <conveyorbelt><x>5.0</x><y>5</y><dir>270</dir></conveyorbelt>
+     <conveyorbelt><x>7.0</x><y>5</y><dir>270</dir></conveyorbelt>
+     <conveyorbelt><x>10.0</x><y>5</y><dir>90</dir></conveyorbelt>
+     <conveyorbelt><x>12.0</x><y>5</y><dir>90</dir></conveyorbelt>
+     <conveyorbelt><x>13.0</x><y>5</y><dir>90</dir></conveyorbelt>
+
+    <conveyorbelt><x>7.0</x><y>6</y><dir>0</dir></conveyorbelt>
+    <conveyorbelt><x>10.0</x><y>6</y><dir>0</dir></conveyorbelt>    
+    <conveyorbelt><x>8.0</x><y>7</y><dir>0</dir></conveyorbelt>
+    <conveyorbelt><x>9.0</x><y>7</y><dir>0</dir></conveyorbelt>
+    <conveyorbelt><x>8.0</x><y>10</y><dir>0</dir></conveyorbelt>
+    <conveyorbelt><x>9.0</x><y>10</y><dir>0</dir></conveyorbelt>  
+         <conveyorbelt><x>10.0</x><y>11</y><dir>270</dir></conveyorbelt>
+     <conveyorbelt><x>7.0</x><y>11</y><dir>90</dir></conveyorbelt>
+          <conveyorbelt><x>10.0</x><y>13</y><dir>90</dir></conveyorbelt>
+     <conveyorbelt><x>7.0</x><y>13</y><dir>270</dir></conveyorbelt>
+      
+    
+    <airlock><x>8.0</x><y>6.0</y></airlock>
+    <airlock><x>9.0</x><y>6.0</y></airlock>
+    <airlock><x>8.0</x><y>12.0</y></airlock>
+    <airlock><x>9.0</x><y>12.0</y></airlock>
+    <airlock><x>8.0</x><y>13.0</y></airlock>
+    <airlock><x>9.0</x><y>13.0</y></airlock>
+    
+     <rotator> <x>6.0</x> <y>6.0</y> <dir>1</dir></rotator>
+     <rotator> <x>8.0</x> <y>8.0</y> <dir>-1</dir></rotator>
+     <rotator> <x>9.0</x> <y>8.0</y> <dir>-1</dir></rotator>
+      <rotator> <x>5.0</x> <y>11.0</y> <dir>1</dir></rotator>
+     <rotator> <x>12.0</x> <y>11.0</y> <dir>1</dir></rotator>
+      <rotator> <x>5.0</x> <y>13.0</y> <dir>1</dir></rotator>
+     <rotator> <x>12.0</x> <y>13.0</y> <dir>1</dir></rotator>
+     
+     <alien> <x> 13.0</x> <y>6.0</y> <state>90</state> </alien> 
 <controlpanel><nr>2</nr></controlpanel>
 </level>

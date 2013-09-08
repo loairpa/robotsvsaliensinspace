@@ -207,7 +207,7 @@ public class LevelLoader {
 			}
 
 		}
-		return new Alien(x,y,state);
+		return new Alien(x+0.1f,y,state);
 	}
 
 	private Laser readLaser(XmlPullParser parser) throws XmlPullParserException, IOException{

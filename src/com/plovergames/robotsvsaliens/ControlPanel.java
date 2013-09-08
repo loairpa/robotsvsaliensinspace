@@ -72,8 +72,10 @@ public class ControlPanel  {
 				currentPanel--;
 				active= activePanel[currentPanel];
 			}
-			if(active==9 && currentPanel==0) 
+			if(active==9 && currentPanel==0){ 
 				end = true;
+				paused = true;
+			}
 
 		}	
 

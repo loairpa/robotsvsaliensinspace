@@ -79,7 +79,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=2;
+		levelNumber=3;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -211,9 +211,9 @@ public class GameScreen extends GLScreen {
 			state=GAME_PAUSED;
 			world.controlPanel.active=0;
 			world.controlPanel.currentPanel=0;
-			world.controlPanel.paused=true;
 			world.controlPanel.end=false;
 			world.generatelevel();
+			
 			return;
 		}
 
@@ -249,7 +249,7 @@ public class GameScreen extends GLScreen {
 				state = GAME_RUNNING;
 				world.controlPanel.active = 1;
 				world.controlPanel.currentPanel=0;
-				world.robot.setState(world.controlPanel.commands[0][0]);
+				world.robot.setState(world.controlPanel.commands[0][world.controlPanel.active-1]);
 				return;
 			}else if(OverlapTester.pointInRectangle(scrollUpBounds, touchPoint)){
 				if(world.camPos[1]<World.WORLD_HEIGHT) world.camPos[1]+=1.0f;

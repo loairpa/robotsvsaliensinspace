@@ -80,7 +80,7 @@ public class Robot extends DynamicGameObject {
 		}
 		
 		walkTime +=deltaTime;
-		}else if(state==ROBOT_STATE_TURNING ||  state == ROBOT_HIT_BY_LASER  ){
+		}else if(state==ROBOT_STATE_TURNING ||  state == ROBOT_HIT_BY_LASER || state == ROBOT_STATE_ON_ROTATOR ){
 			velocity.set(0,0);
 			stateTime+=deltaTime;
 			if(stateTime>1.0f){

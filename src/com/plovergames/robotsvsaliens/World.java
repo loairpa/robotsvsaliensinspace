@@ -112,8 +112,6 @@ public class World {
 
 	private void updateRobot(float deltaTime){
 
-		if(controlPanel.active >8) return;
-
 		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.NEXT_PANEL){
 			controlPanel.activePanel[controlPanel.currentPanel]=controlPanel.active+1;
 			controlPanel.currentPanel++;
@@ -121,14 +119,17 @@ public class World {
 			robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 		}
 
-		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() ){
+		if(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.MOVE && !checkAtEdge() && !rotated){
 			oldDeltaTime = 0.0f;
 			robot.update(deltaTime);
 			if(oldPosition.dist(robot.position)>=1.0f){
-				//				Log.d("oldPosition",""+robot.position.x);
 				updateControlPanel();
 				oldPosition.set(robot.position);
-				if(controlPanel.active==9) controlPanel.end=true;
+				if(controlPanel.active==9){
+					controlPanel.end=true;
+					return;
+				}
+
 
 			}
 
@@ -136,17 +137,23 @@ public class World {
 		else{
 			oldDeltaTime+=deltaTime;
 
-			if(checkAtEdge())
+			if(checkAtEdge()){
 				robot.hitEdge();
-//				robot.state = Robot.ROBOT_STATE_STOP;
-			
 
+			}
 
 			if(oldDeltaTime >=1.0f){
-				rotated = false;
 				oldDeltaTime=0.0f;
+		/*		if(rotated && controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1] == ControlPanel.MOVE )
+					rotated = true;				
+				else
+					rotated = false;*/
 				updateControlPanel();	
+
 				oldPosition.set(robot.position);
+
+
+
 			}			
 		}			
 		if(checkAtButton()){
@@ -154,7 +161,8 @@ public class World {
 			controlPanel.paused=true;
 			state=WORLD_STATE_NEXT_LEVEL;
 			return;
-		}
+		}else controlPanel.paused = false;
+
 		if(checkAlienCollision()){ 
 			Log.d("checkAlienCollision()","True");
 			robot.state= Robot.ROBOT_STATE_DEAD;
@@ -178,38 +186,42 @@ public class World {
 			wasOnBelt = true;
 			controlPanel.paused=true;
 			Log.d("checkAtBelt","True");	
-		}
-		
-		if(checkOnRotator() && !rotated ){
-			Log.d("checkOnRotator","True");
-			if(rotators.get(robotOnRotator).direction== Rotator.COUNTER_CLOCKWISE){
-				robot.direction+=90;
-				robot.position.x = Math.round(robot.position.x)+0.1f;
-				robot.position.y = Math.round(robot.position.y);
-				robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
-				if(robot.direction >270) robot.direction =0;
-				rotated = true;
-				Log.d("direction",""+robot.direction);
-			}
-			else{
-				robot.direction-=90;
-				robot.position.x = Math.round(robot.position.x)+0.1f;
-				robot.position.y = Math.round(robot.position.y);
-				robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
-				if(robot.direction <0) robot.direction =270;
-				rotated = true;
-			}
+		}else controlPanel.paused = false;
+
+		if(oldDeltaTime>0.9f || oldPosition.dist(robot.position)>0.9f){
+			if(checkOnRotator()){
+				if(!rotated){
+					Log.d("checkOnRotator","True");
+					if(rotators.get(robotOnRotator).direction== Rotator.COUNTER_CLOCKWISE){
+						robot.direction+=90;
+						robot.position.x = Math.round(robot.position.x)+0.1f;
+						robot.position.y = Math.round(robot.position.y);
+						robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+						if(robot.direction >270) robot.direction =0;
+						rotated = true;
+						Log.d("Rotated","Counterclockwise "+controlPanel.active);
+					}
+					else{
+						robot.direction-=90;
+						robot.position.x = Math.round(robot.position.x)+0.1f;
+						robot.position.y = Math.round(robot.position.y);
+						robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
+						if(robot.direction <0) robot.direction =270;
+						rotated = true;
+						Log.d("Rotated","clockwise"+controlPanel.active);
+					}
+				}
+			}else 
+				rotated = false;
 
 		}
-		
-		else controlPanel.paused = false;
 	}
 
 	private void updateControlPanel(){
 		controlPanel.update();
-//		if(robot.state==Robot.ROBOT_HIT_BY_LASER) controlPanel.update();
-		
-		robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
+		rotated = false;
+		if(controlPanel.active <9)
+			robot.setState(controlPanel.commands[controlPanel.currentPanel][controlPanel.active-1]);
 	}
 
 
@@ -284,27 +296,27 @@ public class World {
 			robot.position.y = belt.position.y+1.0f;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
 			oldPosition.set(robot.position);
-			Log.v("End of belt 0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("End of belt 0",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 90:
 			robot.position.x = belt.position.x-0.9f;
 			robot.position.y = belt.position.y;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
 			oldPosition.set(robot.position);
-			Log.v("End of belt 90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("End of belt 90",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			break;
 		case 180:
 			robot.position.x = belt.position.x+0.1f;
 			robot.position.y = belt.position.y-1.0f;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
-			Log.v("End of belt 180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("End of belt 180",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			oldPosition.set(robot.position);
 			break;
 		case 270: 
 			robot.position.x = belt.position.x+0.9f;
 			robot.position.y = belt.position.y;
 			robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
-			Log.v("End of belt 270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
+			//			Log.v("End of belt 270",""+robot.bounds.lowerLeft.x+","+robot.bounds.lowerLeft.y);
 			oldPosition.set(robot.position);
 			break;
 		default:
@@ -363,14 +375,14 @@ public class World {
 		for(int i=0; i<rotators.size();i++){
 			if(OverlapTester.overlapHalfRectangles(robot.bounds, rotators.get(i).bounds)){
 				robotOnRotator = i;
-				Log.d("Direction",""+robot.direction);
+				//				Log.d("Direction",""+robot.direction);
 				return true;
-				}
-				
-			}			
-		if(rotated)
-			rotated = false;
-		
+			}
+
+		}			
+		/*		if(rotated)
+			rotated = false;*/
+
 		return false;
 	}
 
