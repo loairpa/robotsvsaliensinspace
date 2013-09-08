@@ -55,7 +55,6 @@ public class World {
 	public List <Instructions> instructions; 
 	public List <Rotator> rotators;
 
-	public int score; 
 	public int state;
 	public boolean tutorial = false;
 	public float[] camPos;
@@ -70,7 +69,6 @@ public class World {
 	public World(LevelLoader level) throws XmlPullParserException, IOException{
 
 		this.level = level;
-		this.score= 0;
 		this.state = WORLD_STATE_RUNNING;
 		this.ship = new ArrayList<Ship>();
 		this.robot = new Robot();
@@ -140,6 +138,8 @@ public class World {
 
 			if(checkAtEdge())
 				robot.hitEdge();
+//				robot.state = Robot.ROBOT_STATE_STOP;
+			
 
 
 			if(oldDeltaTime >=1.0f){
@@ -189,6 +189,7 @@ public class World {
 				robot.bounds.lowerLeft.set(robot.position).sub(robot.bounds.width/2, robot.bounds.height/2);
 				if(robot.direction >270) robot.direction =0;
 				rotated = true;
+				Log.d("direction",""+robot.direction);
 			}
 			else{
 				robot.direction-=90;

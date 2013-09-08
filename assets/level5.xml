@@ -2,30 +2,123 @@
 
 <level>
 
+    <ship> <x>2.0</x>  <y>11.0</y> </ship>
+	<ship> <x>3.0</x>  <y>10.0</y> </ship>
+    <ship> <x>3.0</x>  <y>11.0</y> </ship>
+    <ship> <x>3.0</x>  <y>12.0</y> </ship>
+    <ship> <x>4.0</x>  <y>9.0</y> </ship>
+    <ship> <x>4.0</x>  <y>10.0</y> </ship>
+    <ship> <x>4.0</x>  <y>11.0</y> </ship>
+    <ship> <x>4.0</x>  <y>12.0</y> </ship>
+    <ship> <x>4.0</x>  <y>13.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
     <ship> <x>5.0</x>  <y>7.0</y> </ship>
-	<ship> <x>5.0</x>  <y>6.0</y> </ship>
-    <ship> <x>5.0</x>  <y>5.0</y> </ship>
-    <ship> <x>5.0</x>  <y>4.0</y> </ship>
-    <ship> <x>5.0</x>  <y>3.0</y> </ship>
-    <ship> <x>4.0</x>  <y>7.0</y> </ship>
-    <ship> <x>4.0</x>  <y>6.0</y> </ship>
-    <ship> <x>4.0</x>  <y>5.0</y> </ship>
-    <ship> <x>4.0</x>  <y>4.0</y> </ship>
-    <ship> <x>4.0</x>  <y>3.0</y> </ship>
-   <ship> <x>3.0</x>  <y>7.0</y> </ship>
-    <ship> <x>3.0</x>  <y>6.0</y> </ship>
-    <ship> <x>3.0</x>  <y>5.0</y> </ship>
-    
-     <robot> <x>5.0</x>  <y>7.0</y> </robot>
+    <ship> <x>5.0</x>  <y>8.0</y> </ship>
+    <ship> <x>5.0</x>  <y>9.0</y> </ship>
+    <ship> <x>5.0</x>  <y>10.0</y> </ship>
+    <ship> <x>5.0</x>  <y>11.0</y> </ship>
+    <ship> <x>5.0</x>  <y>12.0</y> </ship>
+    <ship> <x>5.0</x>  <y>13.0</y> </ship>
+    <ship> <x>5.0</x>  <y>14.0</y> </ship>
+    <ship> <x>5.0</x>  <y>15.0</y> </ship>
+    <ship> <x>5.0</x>  <y>16.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>8.0</y> </ship>
+    <ship> <x>6.0</x>  <y>9.0</y> </ship>
+    <ship> <x>6.0</x>  <y>10.0</y> </ship>
+    <ship> <x>6.0</x>  <y>11.0</y> </ship>
+    <ship> <x>6.0</x>  <y>12.0</y> </ship>
+    <ship> <x>6.0</x>  <y>13.0</y> </ship>
+    <ship> <x>6.0</x>  <y>14.0</y> </ship>
+    <ship> <x>6.0</x>  <y>15.0</y> </ship>
+    <ship> <x>6.0</x>  <y>16.0</y> </ship>
+    <ship> <x>6.0</x>  <y>17.0</y> </ship>
+    <ship> <x>7.0</x>  <y>4.0</y> </ship>
+    <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>6.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>
+    <ship> <x>7.0</x>  <y>8.0</y> </ship>
+    <ship> <x>7.0</x>  <y>9.0</y> </ship>
+    <ship> <x>7.0</x>  <y>10.0</y> </ship>
+    <ship> <x>7.0</x>  <y>11.0</y> </ship>
+    <ship> <x>7.0</x>  <y>12.0</y> </ship>
+    <ship> <x>7.0</x>  <y>13.0</y> </ship>
+    <ship> <x>7.0</x>  <y>14.0</y> </ship>
+    <ship> <x>7.0</x>  <y>15.0</y> </ship>
+    <ship> <x>7.0</x>  <y>16.0</y> </ship>
+    <ship> <x>7.0</x>  <y>17.0</y> </ship>
+    <ship> <x>7.0</x>  <y>18.0</y> </ship>
+    <ship> <x>8.0</x>  <y>3.0</y> </ship>
+    <ship> <x>8.0</x>  <y>4.0</y> </ship>
+    <ship> <x>8.0</x>  <y>5.0</y> </ship>
+    <ship> <x>8.0</x>  <y>6.0</y> </ship>
+    <ship> <x>8.0</x>  <y>7.0</y> </ship>
+    <ship> <x>8.0</x>  <y>8.0</y> </ship>
+    <ship> <x>8.0</x>  <y>9.0</y> </ship>
+    <ship> <x>8.0</x>  <y>10.0</y> </ship>
+    <ship> <x>8.0</x>  <y>11.0</y> </ship>
+    <ship> <x>8.0</x>  <y>12.0</y> </ship>
+    <ship> <x>8.0</x>  <y>13.0</y> </ship>
+    <ship> <x>8.0</x>  <y>14.0</y> </ship>
+    <ship> <x>8.0</x>  <y>15.0</y> </ship>
+    <ship> <x>8.0</x>  <y>16.0</y> </ship>
+    <ship> <x>8.0</x>  <y>17.0</y> </ship>
+    <ship> <x>8.0</x>  <y>18.0</y> </ship>
+    <ship> <x>8.0</x>  <y>19.0</y> </ship>
+    <ship> <x>9.0</x>  <y>3.0</y> </ship>
+    <ship> <x>9.0</x>  <y>4.0</y> </ship>
+    <ship> <x>9.0</x>  <y>9.0</y> </ship>
+    <ship> <x>9.0</x>  <y>10.0</y> </ship>
+    <ship> <x>9.0</x>  <y>11.0</y> </ship>
+    <ship> <x>9.0</x>  <y>12.0</y> </ship>
+    <ship> <x>9.0</x>  <y>13.0</y> </ship>
+    <ship> <x>9.0</x>  <y>18.0</y> </ship>
+    <ship> <x>9.0</x>  <y>19.0</y> </ship>   
+    <ship> <x>10.0</x>  <y>9.0</y> </ship>
+    <ship> <x>10.0</x>  <y>10.0</y> </ship>
+    <ship> <x>10.0</x>  <y>11.0</y> </ship>
+    <ship> <x>10.0</x>  <y>12.0</y> </ship>
+    <ship> <x>10.0</x>  <y>13.0</y> </ship>
+    <ship> <x>11.0</x>  <y>8.0</y> </ship>
+    <ship> <x>11.0</x>  <y>9.0</y> </ship>
+    <ship> <x>11.0</x>  <y>10.0</y> </ship>
+    <ship> <x>11.0</x>  <y>11.0</y> </ship>
+    <ship> <x>11.0</x>  <y>12.0</y> </ship>
+    <ship> <x>11.0</x>  <y>13.0</y> </ship>
+    <ship> <x>11.0</x>  <y>14.0</y> </ship>
+    <ship> <x>12.0</x>  <y>7.0</y> </ship>
+    <ship> <x>12.0</x>  <y>8.0</y> </ship>
+    <ship> <x>12.0</x>  <y>9.0</y> </ship>
+    <ship> <x>12.0</x>  <y>10.0</y> </ship>
+    <ship> <x>12.0</x>  <y>11.0</y> </ship>
+    <ship> <x>12.0</x>  <y>12.0</y> </ship>
+    <ship> <x>12.0</x>  <y>13.0</y> </ship>
+    <ship> <x>12.0</x>  <y>14.0</y> </ship>  
+    <ship> <x>12.0</x>  <y>15.0</y> </ship>   
+    <ship> <x>13.0</x>  <y>6.0</y> </ship>
+    <ship> <x>13.0</x>  <y>7.0</y> </ship>
+    <ship> <x>13.0</x>  <y>8.0</y> </ship>
+    <ship> <x>13.0</x>  <y>9.0</y> </ship>
+    <ship> <x>13.0</x>  <y>10.0</y> </ship>
+    <ship> <x>13.0</x>  <y>11.0</y> </ship>
+    <ship> <x>13.0</x>  <y>12.0</y> </ship>
+    <ship> <x>13.0</x>  <y>13.0</y> </ship>
+    <ship> <x>13.0</x>  <y>14.0</y> </ship>  
+    <ship> <x>13.0</x>  <y>15.0</y> </ship>   
+     <ship> <x>13.0</x>  <y>16.0</y> </ship>   
+     
+     <robot> <x>13.0</x>  <y>11.0</y> </robot>
      
      
-     <button><x>5.0</x> <y>4.0</y> </button>
+     <button><x>2.0</x> <y>11.0</y> </button>
      
-     <alien> <x> 4.0</x> <y>7.0</y> <state>90</state> </alien> 
-       <alien> <x> 3.0</x> <y>6.0</y> <state>90</state> </alien> 
-         <alien> <x> 4.0</x> <y>5.0</y> <state>0</state> </alien> 
+     <alien> <x> 7.0</x> <y>9.0</y> <state>90</state> </alien> 
+       <alien> <x> 13.0</x> <y>6.0</y> <state>0</state> </alien> 
+         <alien> <x> 5.0</x> <y>12.0</y> <state>0</state> </alien> 
+         <controlpanel><nr>2</nr></controlpanel>
          
-      <instructions><x> 7.0</x><y>8.0</y><text>You are making    good progress!    Timing is often of the essence.  </text></instructions>
          
 
 

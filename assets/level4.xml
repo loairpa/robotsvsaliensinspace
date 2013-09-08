@@ -2,28 +2,193 @@
 
 <level>
     
-    <ship> <x>6.0</x>  <y>7.0</y> </ship>
-    <ship> <x>6.0</x>  <y>6.0</y> </ship>
-    <ship> <x>6.0</x>  <y>5.0</y> </ship>
-    <ship> <x>5.0</x>  <y>7.0</y> </ship>
-    <ship> <x>5.0</x>  <y>6.0</y> </ship>
-    <ship> <x>5.0</x>  <y>5.0</y> </ship>
-    <ship> <x>4.0</x>  <y>7.0</y> </ship>
-    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+     <ship><x>3.0</x> <y>11.0</y></ship>
+    <ship> <x>3.0</x>  <y>12.0</y> </ship>
+    <ship> <x>3.0</x>  <y>13.0</y> </ship>
+ 
+    <ship><x>4.0</x> <y>4.0</y></ship>
     <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>4.0</x>  <y>8.0</y> </ship>
+     <ship><x>4.0</x> <y>9.0</y></ship>
+    <ship> <x>4.0</x>  <y>10.0</y> </ship>
+    <ship> <x>4.0</x>  <y>11.0</y> </ship>
+    <ship> <x>4.0</x>  <y>12.0</y> </ship>
+    <ship> <x>4.0</x>  <y>13.0</y> </ship>
+    <ship><x>4.0</x> <y>14.0</y></ship>
+    <ship> <x>4.0</x>  <y>15.0</y> </ship>
 
+    <ship><x>5.0</x> <y>4.0</y></ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>8.0</y> </ship>
+     <ship><x>5.0</x> <y>9.0</y></ship>
+    <ship> <x>5.0</x>  <y>10.0</y> </ship>
+    <ship> <x>5.0</x>  <y>11.0</y> </ship>
+    <ship> <x>5.0</x>  <y>12.0</y> </ship>
+    <ship> <x>5.0</x>  <y>13.0</y> </ship>
+    <ship><x>5.0</x> <y>14.0</y></ship>
+    <ship> <x>5.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 5.0</x> <y>16.0</y></ship>
     
-     <robot> <x>6.0</x>  <y>7.0</y> </robot>
+    <ship><x>6.0</x> <y>4.0</y></ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>8.0</y> </ship>
+     <ship><x>6.0</x> <y>9.0</y></ship>
+    <ship> <x>6.0</x>  <y>10.0</y> </ship>
+    <ship> <x>6.0</x>  <y>11.0</y> </ship>
+    <ship> <x>6.0</x>  <y>12.0</y> </ship>
+    <ship> <x>6.0</x>  <y>13.0</y> </ship>
+    <ship><x>6.0</x> <y>14.0</y></ship>
+    <ship> <x>6.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 6.0</x> <y>16.0</y></ship>
+    
+        <ship><x>7.0</x> <y>4.0</y></ship>
+    <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>6.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>
+    <ship> <x>7.0</x>  <y>8.0</y> </ship>
+     <ship><x>7.0</x> <y>9.0</y></ship>
+    <ship> <x>7.0</x>  <y>10.0</y> </ship>
+    <ship> <x>7.0</x>  <y>11.0</y> </ship>
+    <ship> <x>7.0</x>  <y>12.0</y> </ship>
+    <ship> <x>7.0</x>  <y>13.0</y> </ship>
+    <ship><x>7.0</x> <y>14.0</y></ship>
+    <ship> <x>7.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 7.0</x> <y>16.0</y></ship>
+    
+    <ship><x>8.0</x> <y>4.0</y></ship>
+    <ship> <x>8.0</x>  <y>5.0</y> </ship>
+    <ship> <x>8.0</x>  <y>6.0</y> </ship>
+    <ship> <x>8.0</x>  <y>7.0</y> </ship>
+    <ship> <x>8.0</x>  <y>8.0</y> </ship>
+     <ship><x>8.0</x> <y>9.0</y></ship>
+    <ship> <x>8.0</x>  <y>10.0</y> </ship>
+    <ship> <x>8.0</x>  <y>11.0</y> </ship>
+    <ship> <x>8.0</x>  <y>12.0</y> </ship>
+    <ship> <x>8.0</x>  <y>13.0</y> </ship>
+    <ship><x>8.0</x> <y>14.0</y></ship>
+    <ship> <x>8.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 8.0</x> <y>16.0</y></ship>
+    <ship> <x>8.0</x>  <y>17.0</y> </ship>
+    <ship><x>8.0</x> <y>18.0</y></ship>
+    <ship> <x>8.0</x>  <y>19.0</y> </ship>
+    <ship> <x> 8.0</x> <y>20.0</y></ship>
+    
+    <ship><x>9.0</x> <y>4.0</y></ship>
+    <ship> <x>9.0</x>  <y>5.0</y> </ship>
+    <ship> <x>9.0</x>  <y>6.0</y> </ship>
+    <ship> <x>9.0</x>  <y>7.0</y> </ship>
+    <ship> <x>9.0</x>  <y>8.0</y> </ship>
+     <ship><x>9.0</x> <y>9.0</y></ship>
+    <ship> <x>9.0</x>  <y>10.0</y> </ship>
+    <ship> <x>9.0</x>  <y>11.0</y> </ship>
+    <ship> <x>9.0</x>  <y>12.0</y> </ship>
+    <ship> <x>9.0</x>  <y>13.0</y> </ship>
+    <ship><x>9.0</x> <y>14.0</y></ship>
+    <ship> <x>9.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 9.0</x> <y>16.0</y></ship>
+    
+    <ship><x>10.0</x> <y>4.0</y></ship>
+    <ship> <x>10.0</x>  <y>5.0</y> </ship>
+    <ship> <x>10.0</x>  <y>6.0</y> </ship>
+    <ship> <x>10.0</x>  <y>7.0</y> </ship>
+    <ship> <x>10.0</x>  <y>8.0</y> </ship>
+     <ship><x>10.0</x> <y>9.0</y></ship>
+    <ship> <x>10.0</x>  <y>10.0</y> </ship>
+    <ship> <x>10.0</x>  <y>11.0</y> </ship>
+    <ship> <x>10.0</x>  <y>12.0</y> </ship>
+    <ship> <x>10.0</x>  <y>13.0</y> </ship>
+    <ship><x>10.0</x> <y>14.0</y></ship>
+    <ship> <x>10.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 10.0</x> <y>16.0</y></ship>
+
+        <ship><x>11.0</x> <y>4.0</y></ship>
+    <ship> <x>11.0</x>  <y>5.0</y> </ship>
+    <ship> <x>11.0</x>  <y>6.0</y> </ship>
+    <ship> <x>11.0</x>  <y>7.0</y> </ship>
+    <ship> <x>11.0</x>  <y>8.0</y> </ship>
+     <ship><x>11.0</x> <y>9.0</y></ship>
+    <ship> <x>11.0</x>  <y>10.0</y> </ship>
+    <ship> <x>11.0</x>  <y>11.0</y> </ship>
+    <ship> <x>11.0</x>  <y>12.0</y> </ship>
+    <ship> <x>11.0</x>  <y>13.0</y> </ship>
+    <ship><x>11.0</x> <y>14.0</y></ship>
+    <ship> <x>11.0</x>  <y>15.0</y> </ship>
+    <ship> <x> 11.0</x> <y>16.0</y></ship>
+    
+        <ship><x>12.0</x> <y>4.0</y></ship>
+    <ship> <x>12.0</x>  <y>5.0</y> </ship>
+    <ship> <x>12.0</x>  <y>6.0</y> </ship>
+    <ship> <x>12.0</x>  <y>7.0</y> </ship>
+    <ship> <x>12.0</x>  <y>8.0</y> </ship>
+     <ship><x>12.0</x> <y>9.0</y></ship>
+    <ship> <x>12.0</x>  <y>10.0</y> </ship>
+    <ship> <x>12.0</x>  <y>11.0</y> </ship>
+    <ship> <x>12.0</x>  <y>12.0</y> </ship>
+    <ship> <x>12.0</x>  <y>13.0</y> </ship>
+    <ship><x>12.0</x> <y>14.0</y></ship>
+    <ship> <x>12.0</x>  <y>15.0</y> </ship>
+
+         <ship><x>13.0</x> <y>11.0</y></ship>
+    <ship> <x>13.0</x>  <y>12.0</y> </ship>
+    <ship> <x>13.0</x>  <y>13.0</y> </ship>
+    
+     <robot> <x>7.0</x>  <y>4.0</y> </robot>
      
      
-     <button><x>4.0</x> <y>6.0</y> </button>
+     <button><x>8.0</x> <y>20.0</y> </button>
      
 		
-	<laser> <x>5.0</x>  <y>7.0</y> <direction>270</direction> <length>2</length> </laser>
+<conveyorbelt><x>4.0</x><y>6.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>5.0</x><y>6.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>6.0</x><y>6.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>7.0</x><y>6.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>8.0</x><y>6.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>9.0</x><y>6.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>10.0</x><y>6.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>11.0</x><y>6.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>12.0</x><y>6.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>4.0</x><y>8.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>5.0</x><y>8.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>6.0</x><y>8.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>7.0</x><y>8.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>8.0</x><y>8.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>9.0</x><y>8.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>10.0</x><y>8.0</y><dir>0</dir></conveyorbelt>
+<conveyorbelt><x>11.0</x><y>8.0</y><dir>180</dir></conveyorbelt>
+<conveyorbelt><x>12.0</x><y>8.0</y><dir>0</dir></conveyorbelt>
 
 
-	
-	<instructions><x> 7.5</x><y>8.0</y><text>That Was Close!  Be careful around those lasers.  </text></instructions>
-	
+<rotator><x>5.0</x><y>11.0</y><dir>1</dir></rotator>	
+<rotator><x>5.0</x><y>12.0</y><dir>-1</dir></rotator>
+<rotator><x>5.0</x><y>13.0</y><dir>1</dir></rotator>
+<rotator><x>6.0</x><y>11.0</y><dir>1</dir></rotator>	
+<airlock><x>6.0</x><y>12.0</y></airlock>
+<rotator><x>6.0</x><y>13.0</y><dir>1</dir></rotator>
+<rotator><x>7.0</x><y>11.0</y><dir>1</dir></rotator>	
+<rotator><x>7.0</x><y>12.0</y><dir>-1</dir></rotator>
+<rotator><x>7.0</x><y>13.0</y><dir>1</dir></rotator>
 
+<rotator><x>11.0</x><y>11.0</y><dir>1</dir></rotator>	
+<rotator><x>11.0</x><y>12.0</y><dir>-1</dir></rotator>
+<rotator><x>11.0</x><y>13.0</y><dir>1</dir></rotator>
+<rotator><x>10.0</x><y>11.0</y><dir>1</dir></rotator>	
+<airlock><x>10.0</x><y>12.0</y></airlock>
+<rotator><x>10.0</x><y>13.0</y><dir>1</dir></rotator>
+<rotator><x>9.0</x><y>11.0</y><dir>1</dir></rotator>	
+<rotator><x>9.0</x><y>12.0</y><dir>-1</dir></rotator>
+<rotator><x>9.0</x><y>13.0</y><dir>1</dir></rotator>
+
+<alien><x>8.0</x><y>16.0</y><state>90</state></alien>
+<alien><x>4.0</x><y>12.0</y><state>0</state></alien>
+<alien><x>4.0</x><y>4.0</y><state>90</state></alien>
+<alien><x>12.0</x><y>12.0</y><state>0</state></alien>
+<alien><x>12.0</x><y>14.0</y><state>90</state></alien>
+<alien><x>8.0</x><y>10.0</y><state>90</state></alien>
+<controlpanel><nr>2</nr></controlpanel>
 </level>

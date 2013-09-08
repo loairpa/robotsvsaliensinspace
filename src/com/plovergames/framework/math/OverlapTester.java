@@ -77,22 +77,25 @@ public class OverlapTester {
 	public static boolean onTopOfRectangles(Rectangle top, Rectangle bottom, int direction){
 		switch(direction){
 		case 0:
-			if (top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height && top.lowerLeft.x>=bottom.lowerLeft.x  && top.lowerLeft.x+top.width<=bottom.lowerLeft.x+bottom.width+0.1f)
+			if (top.lowerLeft.y +top.height >= bottom.lowerLeft.y &&  top.lowerLeft.y<=bottom.lowerLeft.y && 
+				top.lowerLeft.x-0.1f >= bottom.lowerLeft.x && top.lowerLeft.x-0.1f+top.width/2<=bottom.lowerLeft.x+bottom.width)
 				return true;
 			else return false;
 		case 90:
-			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02f && top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height && top.lowerLeft.x>=bottom.lowerLeft.x )
+			if (top.lowerLeft.y >= bottom.lowerLeft.y &&  top.lowerLeft.y+top.height<bottom.lowerLeft.y+bottom.height && 
+				top.lowerLeft.x-0.1f >= bottom.lowerLeft.x && top.lowerLeft.x-0.1f<=bottom.lowerLeft.x+bottom.width)
 				return true;			
 			else return false;
 
 		case 180:
-			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02&& top.lowerLeft.x>=bottom.lowerLeft.x-0.1f  && top.lowerLeft.x+top.width<=bottom.lowerLeft.x+bottom.width+0.2f)
+			if (top.lowerLeft.y >= bottom.lowerLeft.y &&  top.lowerLeft.y<=bottom.lowerLeft.y+bottom.height && 
+				top.lowerLeft.x-0.1f >= bottom.lowerLeft.x && top.lowerLeft.x-0.1f+top.width/2<=bottom.lowerLeft.x+bottom.width)
 				return true;
 			else
 				return false;
 		case 270:
-			if (top.lowerLeft.y >=bottom.lowerLeft.y-0.02f && top.lowerLeft.y+top.height <=bottom.lowerLeft.y+bottom.height&& top.lowerLeft.x+top.width<= bottom.lowerLeft.x+bottom.width+0.15f)
-				//if (top.lowerLeft.y >=bottom.lowerLeft.y &&  top.lowerLeft.x+top.width<= bottom.lowerLeft.x+bottom.width)  			
+			if (top.lowerLeft.y >= bottom.lowerLeft.y  &&  top.lowerLeft.y<bottom.lowerLeft.y+bottom.height && 
+				top.lowerLeft.x+top.width >= bottom.lowerLeft.x  &&  top.lowerLeft.x-0.1f<=bottom.lowerLeft.x)
 				return true;
 			else return false;
 		default :

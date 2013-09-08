@@ -2,10 +2,59 @@
 
 <level>
 
-    <ship> <x>8.0</x>  <y>6.0</y> </ship>
-    <ship> <x>8.0</x>  <y>5.0</y> </ship>
-    <ship> <x>8.0</x>  <y>4.0</y> </ship>
+    <ship> <x>4.0</x>  <y>4.0</y> </ship>
+    <ship> <x>4.0</x>  <y>5.0</y> </ship>
+    <ship> <x>4.0</x>  <y>6.0</y> </ship>
+    <ship> <x>4.0</x>  <y>7.0</y> </ship>
+    <ship> <x>5.0</x>  <y>4.0</y> </ship>
+    <ship> <x>5.0</x>  <y>5.0</y> </ship>
+    <ship> <x>5.0</x>  <y>6.0</y> </ship>
+    <ship> <x>5.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>5.0</x>  <y>8.0</y> </ship>
+    <ship> <x>6.0</x>  <y>4.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>6.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>6.0</x>  <y>9.0</y> </ship>  
+    <ship> <x>7.0</x>  <y>4.0</y> </ship>
     <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>6.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>7.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>7.0</x>  <y>9.0</y> </ship>  
+    <ship> <x>7.0</x>  <y>10.0</y> </ship>
+    <ship> <x>8.0</x>  <y>4.0</y> </ship>
+    <ship> <x>8.0</x>  <y>5.0</y> </ship>
+    <ship> <x>8.0</x>  <y>6.0</y> </ship>
+    <ship> <x>8.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>8.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>8.0</x>  <y>9.0</y> </ship>  
+    <ship> <x>8.0</x>  <y>10.0</y> </ship> 
+     <ship> <x>8.0</x>  <y>11.0</y> </ship> 
+    <ship> <x>9.0</x>  <y>4.0</y> </ship>
+    <ship> <x>9.0</x>  <y>5.0</y> </ship>
+    <ship> <x>9.0</x>  <y>6.0</y> </ship>
+    <ship> <x>9.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>9.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>9.0</x>  <y>9.0</y> </ship>  
+    <ship> <x>9.0</x>  <y>10.0</y> </ship>    
+    <ship> <x>10.0</x>  <y>4.0</y> </ship>
+    <ship> <x>10.0</x>  <y>5.0</y> </ship>
+    <ship> <x>10.0</x>  <y>6.0</y> </ship>
+    <ship> <x>10.0</x>  <y>7.0</y> </ship>    
+    <ship> <x>10.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>10.0</x>  <y>9.0</y> </ship>      
+    <ship> <x>11.0</x>  <y>4.0</y> </ship>
+    <ship> <x>11.0</x>  <y>5.0</y> </ship>
+    <ship> <x>11.0</x>  <y>6.0</y> </ship> 
+    <ship> <x>11.0</x>  <y>7.0</y> </ship>
+    <ship> <x>11.0</x>  <y>8.0</y> </ship>  
+    <ship> <x>12.0</x>  <y>4.0</y> </ship>
+    <ship> <x>12.0</x>  <y>5.0</y> </ship>
+    <ship> <x>12.0</x>  <y>6.0</y> </ship>
+    <ship> <x>12.0</x>  <y>7.0</y> </ship>
+    
     <ship> <x>7.0</x>  <y>6.0</y> </ship>
     <ship> <x>7.0</x>  <y>7.0</y> </ship>
     <ship> <x>6.0</x>  <y>6.0</y> </ship>
@@ -27,7 +76,6 @@
 	<alien> <x> 6.0</x> <y>6.0</y> <state>0</state> </alien> 
 	
 	<conveyorbelt> <x>8.0</x> <y>5.0</y> <dir>180</dir></conveyorbelt>
-	<instructions><x> 1.0</x><y>9.0</y><text>Since we are having so much fun ...      With  LAsers! </text></instructions>
 	
 
 

@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <level>
-    
+    <ship> <x>10.0</x>  <y>8.0</y> </ship>
+    <ship> <x>10.0</x>  <y>7.0</y> </ship>
+    <ship> <x>10.0</x>  <y>6.0</y> </ship>
+    <ship> <x>10.0</x>  <y>5.0</y> </ship>
+    <ship> <x>10.0</x>  <y>4.0</y> </ship>
+    <ship> <x>9.0</x>  <y>8.0</y> </ship>
+    <ship> <x>9.0</x>  <y>7.0</y> </ship>
+    <ship> <x>9.0</x>  <y>6.0</y> </ship>
+    <ship> <x>9.0</x>  <y>5.0</y> </ship>
+    <ship> <x>9.0</x>  <y>4.0</y> </ship>
+    <ship> <x>8.0</x>  <y>8.0</y> </ship>
+    <ship> <x>8.0</x>  <y>7.0</y> </ship>
+    <ship> <x>8.0</x>  <y>6.0</y> </ship>
+    <ship> <x>8.0</x>  <y>5.0</y> </ship>
+    <ship> <x>8.0</x>  <y>4.0</y> </ship>
+    <ship> <x>7.0</x>  <y>8.0</y> </ship>
+    <ship> <x>7.0</x>  <y>7.0</y> </ship>
+    <ship> <x>7.0</x>  <y>6.0</y> </ship>
+    <ship> <x>7.0</x>  <y>5.0</y> </ship>
+    <ship> <x>7.0</x>  <y>4.0</y> </ship>
+    <ship> <x>6.0</x>  <y>8.0</y> </ship>
+    <ship> <x>6.0</x>  <y>7.0</y> </ship>
+    <ship> <x>6.0</x>  <y>6.0</y> </ship>
+    <ship> <x>6.0</x>  <y>5.0</y> </ship>
+    <ship> <x>6.0</x>  <y>4.0</y> </ship>
     <ship> <x>5.0</x>  <y>7.0</y> </ship>
-    <ship> <x>5.0</x>  <y>6.0</y> </ship>
     <ship> <x>5.0</x>  <y>5.0</y> </ship>
-    <ship> <x>4.0</x>  <y>7.0</y> </ship>
-    <ship> <x>4.0</x>  <y>6.0</y> </ship>
-    <ship> <x>4.0</x>  <y>5.0</y> </ship>
-    <ship> <x>3.0</x>  <y>6.0</y> </ship>
     
-     <robot> <x>5.0</x>  <y>7.0</y> </robot>
-     <button> <x> 3.0</x> <y>6.0</y></button>
-     <instructions><x> 7.0</x><y>9.0</y><text>The Earth is underattack!! You have to destroy the    enemy ships using kamakrazy Robots!!You start trainingNow! Use the panelto program the    movements. Press > to execute your  program </text></instructions>
+    <robot> <x>10.0</x>  <y>6.0</y> </robot>
      
+     
+    <button><x>5.0</x> <y>7.0</y> </button>
 
+	<airlock>  <x>7.0</x>  <y>5.0</y> </airlock>
+	<airlock>  <x>7.0</x>  <y>6.0</y> </airlock>
+	<airlock>  <x>8.0</x>  <y>5.0</y> </airlock>
+	<airlock>  <x>8.0</x>  <y>6.0</y> </airlock>
+	
+
+	
+	<alien> <x> 8.0</x> <y>8.0</y> <state>90</state> </alien> 
+	<alien> <x> 8.0</x> <y>4.0</y> <state>90</state> </alien> 
+	<alien> <x> 7.0</x> <y>7.0</y> <state>90</state> </alien> 
+	<alien> <x> 6.0</x> <y>7.0</y> <state>0</state> </alien> 
+	<controlpanel><nr>2</nr></controlpanel>
+	
+	<rotator><x>6.0</x><y>4.0</y><dir>-1</dir></rotator>
+	<rotator><x>9.0</x><y>6.0</y><dir>-1</dir></rotator>
 </level>
-
-

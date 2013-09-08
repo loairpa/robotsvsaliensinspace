@@ -22,8 +22,8 @@ import com.plovergames.framework.DynamicGameObject;
 
 public class Robot extends DynamicGameObject {
 
-    public static final float ROBOT_WIDTH =1f;
-    public static final float ROBOT_HEIGHT =1f;
+    public static final float ROBOT_WIDTH =1.f;
+    public static final float ROBOT_HEIGHT =1.f;
     public static final float ROBOT_VELOCITY =1.0f;
     
     
@@ -80,7 +80,7 @@ public class Robot extends DynamicGameObject {
 		}
 		
 		walkTime +=deltaTime;
-		}else if(state==ROBOT_STATE_TURNING ||  state == ROBOT_HIT_BY_LASER ){
+		}else if(state==ROBOT_STATE_TURNING ||  state == ROBOT_HIT_BY_LASER  ){
 			velocity.set(0,0);
 			stateTime+=deltaTime;
 			if(stateTime>1.0f){
@@ -88,6 +88,9 @@ public class Robot extends DynamicGameObject {
 				stateTime=0.0f;
 			}
 			
+		}if(state == ROBOT_STATE_DEAD){
+			velocity.set(0,0);
+			stateTime +=deltaTime;///////////
 		}
 			
 		
@@ -99,9 +102,10 @@ public class Robot extends DynamicGameObject {
 	}
 
 	public void hitEdge(){
-//		state= ROBOT_STATE_STOP;
+		state= ROBOT_STATE_STOP;
 //		velocity.set(0,0);
 //		walkTime=0;
+		
 		Log.d("hitEdge","True");
 
 	}

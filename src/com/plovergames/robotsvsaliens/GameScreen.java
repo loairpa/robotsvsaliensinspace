@@ -53,12 +53,7 @@ public class GameScreen extends GLScreen {
 	Rectangle pauseBounds;
 	Rectangle resumeBounds;
 	Rectangle scrollUpBounds;
-	Rectangle scrollDownBounds;
-	// TODO:  
-	Rectangle scrollLeftBounds; 
-	Rectangle scrollRightBounds; 
-	
-	
+	Rectangle scrollDownBounds;	
 	Rectangle zoomInBounds; 
 	Rectangle zoomOutBounds;
 
@@ -84,7 +79,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=4;
+		levelNumber=2;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
@@ -264,7 +259,7 @@ public class GameScreen extends GLScreen {
 			}else if(OverlapTester.pointInRectangle(zoomInBounds, touchPoint)){
 				if(renderer.cam.zoom> 1.0f) renderer.cam.zoom-=0.1f;
 			}else if(OverlapTester.pointInRectangle(zoomOutBounds, touchPoint)){
-				Log.v("Zoom Out", ""+touchPoint.x+","+touchPoint.y);
+				 if(renderer.cam.zoom<5.0f)renderer.cam.zoom+=0.1f;
 			}
 			else{
 				world.controlPanel.menu(touchPoint);

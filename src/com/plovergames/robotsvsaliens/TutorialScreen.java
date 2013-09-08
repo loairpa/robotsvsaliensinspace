@@ -76,7 +76,7 @@ public class TutorialScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		tutorialNumber=4;
+		tutorialNumber=1;
 		String filename = "tutorial"+tutorialNumber+".xml";
 
 		try{
