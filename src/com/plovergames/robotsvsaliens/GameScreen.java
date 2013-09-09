@@ -79,7 +79,7 @@ public class GameScreen extends GLScreen {
 //				Assets.playSound(Assets.coinSound);
 //			}
 //		};_*/
-		levelNumber=3;
+		levelNumber=1;
 		String filename = "level"+levelNumber+".xml";
 
 		try{
